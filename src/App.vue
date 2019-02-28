@@ -1,16 +1,16 @@
 <template>
   <div id="app">
-    <DrawChart/>
+    <PriceChart></PriceChart>
   </div>
 </template>
 
 <script>
-import DrawChart from './components/DrawChart/DrawChart.vue'
+import PriceChart from './components/PriceChart/PriceChart.vue'
 
 export default {
   name: 'app',
   components: {
-    DrawChart
+    PriceChart
   }
 }
 </script>
