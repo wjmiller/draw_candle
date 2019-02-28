@@ -10,15 +10,25 @@ export default {
     const grid = {
       priceStart: 0,
       priceEnd: 10,
-      priceIncr: 2
+      priceIncr: 2,
+      gridWidth: 300,
+      gridHeight: 300,
+      axisColor: '#000',
+      priceLineColor: '#aaa',
+      numColor: '#555'
     };
     const {
       priceEnd,
-      priceIncr
+      priceIncr,
+      gridWidth,
+      gridHeight,
+      axisColor,
+      priceLineColor,
+      numColor
     } = grid;
 
     // Make SVG Drawing Canvas
-    const draw = SVG('chart').size(300, 300);
+    const draw = SVG('chart').size(gridWidth, gridHeight);
 
     // Set the height value of bottom price line
     let lineHeight = priceEnd / priceIncr * 30 + 35;
@@ -44,24 +54,24 @@ export default {
     function drawPriceLine(n, h) {
       if (n !== 0) {
         draw.line('100%', h, 26, h).stroke({
-          color: '#aaa',
+          color: priceLineColor,
           width: 1
         });
       }
       draw.text(n.toString()).move(0, h - 6).font({
         size: '12px',
-        fill: '#555',
+        fill: numColor,
         family: 'Arial'
       });
     }
 
     function drawAxis(h) {
       draw.line(25, h, 25, 5).stroke({
-        color: '#000',
+        color: axisColor,
         width: 1
       });
       draw.line('100%', h, 25, h).stroke({
-        color: '#000',
+        color: axisColor,
         width: 1
       });
     }
