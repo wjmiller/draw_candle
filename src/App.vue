@@ -1,28 +1,46 @@
 <template>
   <div id="app">
-    <PriceChart></PriceChart>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-5">
+
+        </div>
+        <div class="col-md-7">
+          <CandleBuilder :cbdata="charts[0]"></CandleBuilder>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import PriceChart from './components/PriceChart/PriceChart.vue'
+import CandleBuilder from './components/CandleBuilder/CandleBuilder.vue'
 
 export default {
   name: 'app',
+  data() {
+    return {
+      charts: [
+        {
+          cdata: {
+            prices: [10,8,6,4,2,0]
+          },
+          csdata: {
+            bodyTop: 150,
+            bodyHeight: 25,
+            wickTop: 25,
+            wickBottom: 25,
+            candleRed: false
+          }
+        }
+      ]
+    }
+  },
   components: {
-    PriceChart
+    CandleBuilder
   }
 }
 </script>
 
 <style>
-
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #fff;
-  margin-top: 60px;
-}
 </style>
