@@ -1,67 +1,73 @@
 <template>
   <div id="app">
     <div class="container">
-      <div class="row">
-        <div class="col-md-7">
-          <h3>Light Theme</h3>
-          <CandleBuilder :cbdata="charts[0]"></CandleBuilder>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-7">
-          <h3>Dark Theme</h3>
-          <CandleBuilder :cbdata="charts[1]"></CandleBuilder>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-7">
-          <button class="btn btn-default btn-block margin-top" v-on:click="getCandleData">Get Candle Data</button>
-        </div>
-      </div>
+      <ActivityGroup v-for="activity in activities" :activity="activity"/>
     </div>
   </div>
 </template>
 
 <script>
-import CandleBuilder from './components/CandleBuilder/CandleBuilder.vue'
+import ActivityGroup from './components/ActivityGroup'
 import { eventBus } from './main.js';
 
 export default {
   name: 'app',
   data() {
     return {
-      charts: [
+      activities: [
         {
-          theme: 'light',
-          cdata: {
-            prices: [10,8,6,4,2,0]
-          },
-          csdata: {
-            bodyTop: 150,
-            bodyHeight: 25,
-            wickTop: 25,
-            wickBottom: 25,
-            candleRed: true
-          }
-        },
-        {
-          theme: 'dark',
-          cdata: {
-            prices: [10,8,6,4,2,0]
-          },
-          csdata: {
-            bodyTop: 150,
-            bodyHeight: 25,
-            wickTop: 25,
-            wickBottom: 25,
-            candleRed: false
-          }
+          id: "samecandle",
+          candles: [
+            {
+              pricechart: {},
+              candlechart: {
+                theme: 'dark',
+                cdata: {
+                  prices: [10,8,6,4,2,0]
+                },
+                csdata: {
+                  bodyTop: 150,
+                  bodyHeight: 25,
+                  wickTop: 25,
+                  wickBottom: 25,
+                  candleRed: false
+                }
+              },
+              feedback: {}
+            },
+            {
+              pricechart: {},
+              candlechart: {
+                theme: 'dark',
+                cdata: {
+                  prices: [10,8,6,4,2,0]
+                },
+                csdata: {
+                  bodyTop: 150,
+                  bodyHeight: 25,
+                  wickTop: 25,
+                  wickBottom: 25,
+                  candleRed: true
+                }
+              },
+              feedback: {}
+            }
+          ],
+          questions: [
+            {
+              instruction: "Draw candles 1 and 2 correctly to view this question.",
+              question: "Why are the two candles the same even though the two charts are different time frames?",
+              feedback: {
+                correct: "Even though there are two different time frames, the two candles have the exact same open, close, high and low values.",
+              }
+            }
+          ]
         }
       ]
     }
   },
   components: {
-    CandleBuilder
+    ActivityGroup
   },
   methods: {
     getCandleData() {
@@ -79,6 +85,7 @@ export default {
 <style>
   #app {
     margin-bottom: 60px;
+    color: #fff;
   }
   .margin-top {
     margin-top: 30px;
