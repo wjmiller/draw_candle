@@ -19,16 +19,37 @@ export default {
 </script>
 
 <!-- CSS with 'chart' attribute for this component -->
-<style chart>
-  .chart-bg {
-    fill: #242a41;
-  }
+<style lang="scss" chart>
+
   .chart-num {
     font: 14px 'Roboto';
-    fill: #ddd;
   }
   .chart-line {
-    stroke:#555;
     stroke-width:1;
   }
+
+  .cb-dark {
+    .chart-bg {
+      fill: #242a41;
+    }
+    .chart-num {
+      fill: #ddd;
+    }
+    .chart-line {
+      stroke:#555;
+    }
+  }
+
+  .cb-light {
+    .chart-bg {
+      fill: #fff;
+    }
+    .chart-num {
+      fill: #333;
+    }
+    .chart-line {
+      stroke:#999;
+    }
+  }
+
 </style>
