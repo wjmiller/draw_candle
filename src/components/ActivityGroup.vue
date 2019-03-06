@@ -22,10 +22,13 @@ export default {
     CandleRow,
     QuestionRow
   },
+  created () {
+    this.candlesCorrect = Array.from(this.activity.candles).fill(false);
+  },
   methods: {
     checkCandles (val, ix) {
       this.candlesCorrect[ix] = val;
-      if (this.candlesCorrect.every(item => item) && this.candlesCorrect.length === this.activity.candles.length) {
+      if (this.candlesCorrect.every(item => item === true) && this.candlesCorrect.length === this.activity.candles.length) {
         this.openQuestion = true;
       }
     }
