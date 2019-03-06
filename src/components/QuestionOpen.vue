@@ -45,7 +45,7 @@ export default {
 
 .response {
   width: 100%;
-  height: 120px;
+  height: 150px;
   padding: 10px 15px;
   border-radius: 8px;
 }
@@ -58,6 +58,7 @@ export default {
   .response {
     border-color: $pane-dark-border;
     background: $pane-dark-bg;
+    color: $text-color-dark;
 
 
     &:focus, &:active {

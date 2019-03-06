@@ -44,7 +44,8 @@ export default {
   @import '../Variables.scss';
 
   .question-row {
-    //padding-top: 15px;
+    min-height: 210px;
+
 
     h4 {
       margin-bottom: 14px;
@@ -54,6 +55,7 @@ export default {
       display: block;
       padding: 10px 15px;
       border-radius: 8px;
+      min-height: 160px
     }
   }
 

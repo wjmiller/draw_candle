@@ -39,7 +39,7 @@ export default {
 @import '../Variables.scss';
 
 .activity-group {
-  padding: 20px 20px 25px;
+  padding: 20px 30px 25px;
   border-radius: $border-radius;
   margin-bottom: 60px;
 

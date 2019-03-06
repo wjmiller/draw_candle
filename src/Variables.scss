@@ -13,7 +13,7 @@ $header-color-dark: #fff;
 $text-color-dark: lighten($blue-dark, 80%);
 $border-radius: 8px;
 
-$body-dark-bg: darken($blue-dark, 5%);
+$body-dark-bg: #f8f8f8; //darken($blue-dark, 5%);
 $group-dark-bg: $blue-dark;
 $group-dark-border: lighten($blue-dark, 10%);
 

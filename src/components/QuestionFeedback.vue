@@ -59,7 +59,7 @@ export default {
     margin: 20px 0;
     padding: 10px;
     border-radius: $border-radius;
-    min-height: 70px;
+    min-height: 120px;
   }
 
   .feedback-message, .feedback-overlay {
