@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="activity-group">
-    <h2>{{activity.id}}</h2>
+    <h2>{{activity.title}}</h2>
     <p>{{activity.questions[0].instruction}}</p>
     <CandleRow v-for="(candle, ix) in activity.candles" :candle="candle" :key="`${activity.id}-${ix}-candle`" v-on:candle-correct="checkCandles($event, ix)"/>
     <QuestionRow v-for="(question, ix) in activity.questions" :question="question" :key="`${activity.id}-${ix}-question`" :active="openQuestion"/>
