@@ -1,23 +1,15 @@
 <template lang="html">
-  <b-container class="feedback">
-    <b-row>
-      <b-col>
-        <b-button size="sm" :disabled="activeFeedback" @click="revealFeedback()">{{buttonTitle}}</b-button>
-      </b-col>
-    </b-row>
-    <b-row>
-      <b-col>
-        <div class="feedback-display">
-          <div class="feedback-message" v-if="revealed">
-              {{feedback.correct}}
-          </div>
-          <div class="feedback-overlay" v-if="!revealed">
-            {{inactiveMessage}}
-          </div>
-        </div>
-      </b-col>
-    </b-row>
-  </b-container>
+  <div class="feedback">
+    <b-button size="sm" :disabled="activeFeedback" @click="revealFeedback()">{{buttonTitle}}</b-button>
+    <div class="feedback-display">
+      <div class="feedback-message" v-if="revealed">
+          {{feedback.correct}}
+      </div>
+      <div class="feedback-overlay" v-if="!revealed">
+        {{inactiveMessage}}
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -53,17 +45,34 @@ export default {
 
 @import '../Variables.scss';
 
-.feedback-display {
-  position: relative;
-  margin: 20px 0;
-  padding: 10px;
-  border-radius: $border-radius;
-  min-height: 70px;
+.feedback {
+  margin-top: 25px;
+
+  button {
+    font-size: 0.95em;
+    display: block;
+    width: 100%;
+  }
+
+  .feedback-display {
+    position: relative;
+    margin: 20px 0;
+    padding: 10px;
+    border-radius: $border-radius;
+    min-height: 70px;
+  }
+
+  .feedback-message, .feedback-overlay {
+    font-size:  0.95em;
+  }
+
+  @media(min-width: 576px) {
+    margin-top: 0;
+
+  }
 }
 
-.feedback-message, .feedback-overlay {
-  font-size:  0.95em;
-}
+
 
 .dark {
   .feedback-display {

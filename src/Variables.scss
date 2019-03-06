@@ -6,10 +6,11 @@ $magenta: rgb(232, 116, 248);
 $maroon: rgb(137, 52, 63);
 $blue-med: rgb(41,101,149);
 $gray-dark: rgb(64, 69, 90);
-$gray-light: #909090;
+$gray-light: #777;
 
 $text-color-light: #333;
-$text-color-dark: #fff;
+$header-color-dark: #fff;
+$text-color-dark: lighten($blue-dark, 80%);
 $border-radius: 8px;
 
 $body-dark-bg: darken($blue-dark, 5%);

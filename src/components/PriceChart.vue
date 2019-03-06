@@ -2,6 +2,9 @@
 <template>
   <div class="price-chart row">
     <div class="col-sm-12">
+      <h3>Price Chart</h3>
+    </div>
+    <div class="col-sm-12">
       <svg id="pchart" width="100%" v-bind:height="88 + ((pcdata.prices.length - 1) * 40)">
         <g>
           <rect width="100%" height="100%" class="chart-bg"></rect>
@@ -64,8 +67,15 @@ export default {
   @import '../Variables.scss';
 
   .price-chart {
-    padding: 18px 0 0;
     margin-bottom: 15px;
+
+    h3 {
+      font-size: 0.95em;
+      text-align: center;
+      padding: 4px 10px;
+      margin-bottom: 15px;
+      border-radius: 20px;
+    }
   }
 
   .chart-num {
@@ -94,6 +104,14 @@ export default {
   }
 
   .dark {
+
+    .price-chart {
+      h3 {
+        background: $pane-dark-bg;
+        border: 1px solid $pane-dark-border;
+      }
+    }
+
     .chart-bg {
       fill: $group-dark-bg;
     }
@@ -116,6 +134,14 @@ export default {
   }
 
   .light {
+
+    .price-chart {
+      h3 {
+        background: $pane-light-bg;
+        border: 1px solid $pane-light-border;
+      }
+    }
+
     .chart-bg {
       fill: $group-light-bg;
     }

@@ -29,6 +29,13 @@ body {
 
 .btn {
   border-radius: 0;
+
+  &.btn-sm {
+    padding: 0.3rem 0.65rem;
+    font-size: 0.9rem;
+    line-height: 1.5;
+  }
+
 }
 
 
@@ -47,8 +54,8 @@ body {
     &:active,
     &:visited,
     &:focus {
-      background-color: #6c757d;
-      border-color: #6c757d;
+      background-color: $gray-dark;
+      border-color: $gray-dark;
     }
   }
 

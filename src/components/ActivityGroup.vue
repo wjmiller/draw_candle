@@ -1,6 +1,7 @@
 <template lang="html">
   <div class="activity-group">
     <h2>{{activity.id}}</h2>
+    <p>{{activity.questions[0].instruction}}</p>
     <CandleRow v-for="(candle, ix) in activity.candles" :candle="candle" :key="`${activity.id}-${ix}-candle`" v-on:candle-correct="checkCandles($event, ix)"/>
     <QuestionRow v-for="(question, ix) in activity.questions" :question="question" :key="`${activity.id}-${ix}-question`" :active="openQuestion"/>
   </div>
@@ -38,17 +39,27 @@ export default {
 @import '../Variables.scss';
 
 .activity-group {
-  padding: 20px;
+  padding: 20px 20px 25px;
   border-radius: $border-radius;
   margin-bottom: 60px;
+
+  p {
+    margin-bottom: 35px;
+    font-style: italic;
+  }
 }
 
 .dark {
   .activity-group {
     background: $group-dark-bg;
     border: 1px solid $group-dark-border;
+    color: $text-color-dark;
 
     h2 {
+      color: $header-color-dark;
+    }
+
+    p {
       color: $text-color-dark;
     }
   }
@@ -58,9 +69,10 @@ export default {
   .activity-group {
     background: $group-light-bg;
     border: 1px solid $group-light-border;
+    color: $text-color-light;
 
-    h2 {
-      color: $text-color-light;
+    p {
+      color: lighten($text-color-light, 25%);
     }
   }
 }

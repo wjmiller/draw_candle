@@ -1,6 +1,9 @@
 <!-- Template -->
 <template>
   <div class="row candle-builder">
+    <div class="col-sm-12">
+      <h3>Candle Builder</h3>
+    </div>
     <div class="col-sm-8 col-md-8 col-lg-8">
       <svg id="chart" width="100%" v-bind:height="51 + ((cbdata.cdata.prices.length - 1) * 40)">
         <g>
@@ -131,8 +134,15 @@ export default {
   @import '../Variables.scss';
 
   .candle-builder {
-    padding: 20px 0 25px;
     margin-bottom: 15px;
+
+    h3 {
+      font-size: 0.95em;
+      text-align: center;
+      padding: 4px 10px;
+      margin-bottom: 15px;
+      border-radius: 20px;
+    }
 
     .chart-num {
       font: 14px 'Roboto';
@@ -285,6 +295,11 @@ export default {
   .dark {
     .candle-builder {
 
+      h3 {
+        background: $pane-dark-bg;
+        border: 1px solid $pane-dark-border;
+      }
+
       .chart-bg {
         fill: $group-dark-bg;
       }
@@ -332,6 +347,11 @@ export default {
 
   .light {
     .candle-builder {
+
+      h3 {
+        background: $pane-light-bg;
+        border: 1px solid $pane-light-border;
+      }
 
       .chart-bg {
         fill: $group-light-bg;

@@ -1,13 +1,8 @@
 <template lang="html">
-  <b-container class="feedback">
-    <b-row>
-      <b-col>
-        <b-button class="feedback-btn" size="sm" :disabled="!active" @click="revealFeedback()">{{buttonTitle}}</b-button>
-      </b-col>
-    </b-row>
-    <b-row>
-      <b-col>
-        <div class="feedback-display">
+  <div class="feedback">
+    <b-button class="feedback-btn" size="sm" :disabled="!active" @click="revealFeedback()">{{buttonTitle}}</b-button>
+    <div>
+      <div class="feedback-display">
           <div class="feedback-message" v-if="revealed">
             <div class="feedback-correct" v-if="correct && revealed">
               Correct
@@ -31,13 +26,11 @@
             </div>
           </div>
         </div>
-      </b-col>
-    </b-row>
-  </b-container>
+    </div>
+  </div>
 </template>
 
 <script>
-import fontAwesome from '../main.js'
 
 export default {
   name: 'CandleFeedback',
@@ -63,11 +56,15 @@ export default {
 @import '../Variables.scss';
 
 .feedback {
+
   .feedback-btn {
-    margin-top: 0px;
+    margin-top: 25px;
+    font-size: 0.95em;
+    display: block;
+    width: 100%;
 
     @media(min-width: 576px) {
-      margin-top: 20px;
+      margin-top: 44px;
     }
   }
 }
@@ -77,18 +74,26 @@ export default {
   margin: 20px 0;
   padding: 10px;
   border-radius: $border-radius;
-  min-height: 200px;
+  min-height: 60px;
+
+  @media(min-width: 768px) {
+    min-height: 215px;
+  }
 }
 
 .feedback-message {
   font-size:  0.95em;
 
   .feedback-correct {
+    font-size:  1.2em;
+    font-weight: 600;
     color: $green;
     margin-bottom: 5px;
   }
 
   .feedback-incorrect {
+    font-size:  1.2em;
+    font-weight: 600;
     color: $red;
     margin-bottom: 5px;
   }
@@ -96,8 +101,8 @@ export default {
 
 .dark {
   .feedback-display {
-    background-color: $pane-dark-bg;
-    border: 1px solid $pane-dark-border;
+    background-color: darken($pane-dark-bg, 2%);
+    border: 1px solid darken($pane-dark-border, 2%);
     color: $text-color-dark;
   }
 }

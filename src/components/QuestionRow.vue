@@ -2,12 +2,12 @@
   <b-row class="question-row">
     <b-col v-if="!active" cols="12">
       <h4>Question</h4>
-      <span class="prompt">Correctly construct the candlesticks in this group before answering this question.</span>
+      <span class="prompt">Correctly complete the activity above to unlock this question.</span>
     </b-col>
-    <b-col v-if="active" cols="9">
+    <b-col v-if="active" cols="12" md="9">
       <QuestionOpen v-on:valid-change="activateFeedback($event)" :active="active" :question="question.question"/>
     </b-col>
-    <b-col v-if="active" cols="3">
+    <b-col v-if="active" cols="12" md="3">
       <QuestionFeedback :active="feedbackActive" :feedback="question.feedback"/>
     </b-col>
   </b-row>
@@ -44,7 +44,7 @@ export default {
   @import '../Variables.scss';
 
   .question-row {
-    padding-top: 15px;
+    //padding-top: 15px;
 
     h4 {
       margin-bottom: 14px;
@@ -59,24 +59,24 @@ export default {
 
   .dark {
     .question-row {
-      border-top: 1px solid $pane-dark-border;
+      //border-top: 1px solid $pane-dark-border;
 
       .prompt {
         background: $pane-dark-bg;
         border: 1px solid $pane-dark-border;
-        color: #fff;
+        color: lighten($blue-dark, 70%);
       }
     }
   }
 
   .light {
     .question-row {
-      border-top: 1px solid #ddd;
+      //border-top: 1px solid #ddd;
 
       .prompt {
         background: $pane-light-bg;
         border: 1px solid $pane-light-border;
-        color: #333;
+        color: lighten($text-color-light, 25%);
       }
     }
   }
