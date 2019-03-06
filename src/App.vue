@@ -21,16 +21,19 @@ export default {
             {
               pricechart: {},
               candlechart: {
-                theme: 'dark',
                 cdata: {
-                  prices: [10,8,6,4,2,0]
+                  theme: 'dark',
+                  prices: [10,8,6,4,2,0],
+                  timeIntervals: ['10','11','12','13','14','15'],
+                  timeLabel: 'Hr',
+                  pricePoints: [2,6,8,4,10,6]
                 },
                 csdata: {
-                  bodyTop: 150,
-                  bodyHeight: 25,
-                  wickTop: 25,
-                  wickBottom: 25,
-                  candleRed: false
+                  bodyTop: 120,
+                  bodyHeight: 20,
+                  wickTop: 20,
+                  wickBottom: 20,
+                  candleRed: true
                 }
               },
               feedback: {}
@@ -38,16 +41,19 @@ export default {
             {
               pricechart: {},
               candlechart: {
-                theme: 'dark',
                 cdata: {
-                  prices: [10,8,6,4,2,0]
+                  theme: 'dark',
+                  prices: [10,8,6,4,2,0],
+                  timeIntervals: ['2/22','2/25','2/26','2/27','2/28'],
+                  timeLabel: 'Day',
+                  pricePoints: [2,4,8,10,6]
                 },
                 csdata: {
-                  bodyTop: 150,
-                  bodyHeight: 25,
-                  wickTop: 25,
-                  wickBottom: 25,
-                  candleRed: true
+                  bodyTop: 120,
+                  bodyHeight: 20,
+                  wickTop: 20,
+                  wickBottom: 20,
+                  candleRed: false
                 }
               },
               feedback: {}
@@ -75,9 +81,11 @@ export default {
     }
   },
   created() {
+    /*
     eventBus.$on('return-candle-data', (data) => {
       console.log(data)
     });
+    */
   }
 }
 </script>
@@ -85,7 +93,6 @@ export default {
 <style>
   #app {
     margin-bottom: 60px;
-    color: #fff;
   }
   .margin-top {
     margin-top: 30px;

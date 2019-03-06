@@ -33,9 +33,33 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
+
+@import '../Variables.scss';
+
 .response {
   width: 100%;
-  height: 200px;
+  height: 120px;
+  padding: 10px 15px;
+  border-radius: 8px;
+}
+.dark {
+  .response {
+    border-color: $controls-dark-border;
+    background: $controls-dark-bg;
+    color: #fff;
+
+    &:focus, &:active {
+      outline: 5px solid rgba(255,255,255,0.2);
+    }
+  }
+}
+
+.light {
+  .response {
+    border-color: $controls-light-border;
+    background: $controls-light-bg;
+    color: #333;
+  }
 }
 </style>

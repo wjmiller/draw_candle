@@ -1,0 +1,30 @@
+$blue-dark: rgb(26, 28, 45);
+$green: rgb(99, 200, 72);
+$red: rgb(231, 50, 37);
+$gray: rgb(102, 103, 107);
+$magenta: rgb(232, 116, 248);
+$maroon: rgb(137, 52, 63);
+$blue-med: rgb(41,101,149);
+$gray-dark: rgb(64, 69, 90);
+
+$chart-dark-text: #fff;
+$chart-dark-lines: #888;
+$chart-dark-curve: #555;
+$chart-dark-points: $magenta;
+
+$chart-light-text: #333;
+$chart-light-lines: #999;
+$chart-light-curve: #bbb;
+$chart-light-points: $blue-med;
+
+$controls-dark-bg: lighten($blue-dark, 8%);
+$controls-dark-border: lighten($blue-dark, 8%);
+
+$slide-dark-bg: $blue-dark; //#777;
+$slide-dark-handle: lighten($blue-dark, 60%);//#fff;
+
+$controls-light-bg: #fafafa;
+$controls-light-border: #ccc;
+
+$slide-light-bg: #bbb;
+$slide-light-handle: #555;

@@ -1,9 +1,35 @@
 @import 'node_modules/bootstrap/scss/bootstrap';
 @import 'node_modules/bootstrap-vue/src/index.scss';
+@import './Variables.scss';
 
 body {
-  margin-top: 60px;
+  padding-top: 60px;
   font-family: 'Roboto';
-  font-size: 15px;
-  background-color: rgb(26, 28, 45);
+  font-size: 16px;
+
+  &.dark {
+    background: $blue-dark;
+    color: #fff;
+  }
+
+  &.light {
+    background-color: #fff;
+    color: #333;
+  }
+}
+
+
+.btn:hover,
+.btn:active,
+.btn:visited,
+.btn:focus {
+  background-color: darken($gray-dark, 4%);
+  border-color: lighten($gray-dark, 2%);
+  color: white;
+}
+
+.btn {
+  color: white;
+  background-color: $gray-dark;
+  border-color: lighten($gray-dark, 8%);
 }

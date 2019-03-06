@@ -36,11 +36,8 @@ export default {
 }
 </script>
 
-<style lang="css">
-#app {
-  background-color: rgb(26, 28, 45);
-}
-.question-row {
-  min-height: 200px;
-}
+<style lang="scss">
+  .question-row {
+    min-height: 200px;
+  }
 </style>

@@ -1,9 +1,9 @@
 <!-- Template -->
 <template>
   <g>
-    <line x1="185" v-bind:y1="cs.bodyTop" x2="185" v-bind:y2="parseInt(cs.bodyTop) - parseInt(cs.wickTop)" class="candle-wick" />
-    <rect :x="155" v-bind:y="cs.bodyTop" width="60" v-bind:height="cs.bodyHeight" v-bind:class="{ 'candle-green': !cs.candleRed, 'candle-red': cs.candleRed }"/>
-    <line x1="185" v-bind:y1="parseInt(cs.bodyHeight) + parseInt(cs.bodyTop) + parseInt(cs.wickBottom)" x2="185" v-bind:y2="parseInt(cs.bodyHeight) + parseInt(cs.bodyTop)" class="candle-wick"/>
+    <line x1="165" v-bind:y1="cs.bodyTop" x2="165" v-bind:y2="parseInt(cs.bodyTop) - parseInt(cs.wickTop)" class="candle-wick" />
+    <rect :x="135" v-bind:y="cs.bodyTop" width="60" v-bind:height="cs.bodyHeight" v-bind:class="{ 'candle-green': !cs.candleRed, 'candle-red': cs.candleRed }"/>
+    <line x1="165" v-bind:y1="parseInt(cs.bodyHeight) + parseInt(cs.bodyTop) + parseInt(cs.wickBottom)" x2="165" v-bind:y2="parseInt(cs.bodyHeight) + parseInt(cs.bodyTop)" class="candle-wick"/>
   </g>
 </template>
 
@@ -27,29 +27,29 @@ export default {
 <!-- CSS with 'stick' attribute for this component -->
 <style lang="scss" stick>
 
+  @import '../../Variables.scss';
+
   .candle-green {
-    fill:#62C848;
+    fill:$green;
   }
 
   .candle-red {
-    fill:#E23B2B;
+    fill:$red;
   }
 
   .candle-wick {
     stroke-width:2;
   }
 
-  .cb-dark {
+  .dark {
     .candle-wick {
-      stroke: #929299;
-      stroke-width:2;
+      stroke: $gray;
     }
   }
 
-  .cb-light {
+  .light {
     .candle-wick {
       stroke: #444;
-      stroke-width:2;
     }
   }
 

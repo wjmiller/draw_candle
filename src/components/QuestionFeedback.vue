@@ -2,7 +2,7 @@
   <b-container class="feedback">
     <b-row>
       <b-col>
-        <b-button variant="primary" :disabled="activeFeedback" @click="revealFeedback()">{{buttonTitle}}</b-button>
+        <b-button size="sm" :disabled="activeFeedback" @click="revealFeedback()">{{buttonTitle}}</b-button>
       </b-col>
     </b-row>
     <b-row>
@@ -47,7 +47,9 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" scoped>
+
+@import '../Variables.scss';
 
 .feedback-display {
   min-height: 200px;
@@ -65,9 +67,20 @@ export default {
 }
 
 .feedback-overlay {
-  background-color: rgb(26, 28, 45);
   opacity: 1;
   transition: opacity 0.5s;
+}
+
+.dark {
+  .feedback-overlay {
+    background-color: $blue-dark;
+  }
+}
+
+.light {
+  .feedback-overlay {
+    background-color: #fff;
+  }
 }
 
 .feedback-overlay.hidden {

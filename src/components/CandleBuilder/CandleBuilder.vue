@@ -1,31 +1,31 @@
 <!-- Template -->
 <template>
-  <div class="row candle-builder" v-bind:class="{ 'cb-dark': cbdata.theme == 'dark', 'cb-light': cbdata.theme == 'light' }">
-    <div class="col-sm-7 col-lg-7">
-      <svg id="chart" width="100%" v-bind:height="55 + ((cbdata.cdata.prices.length - 1) * 50)">
+  <div class="row candle-builder">
+    <div class="col-sm-8 col-md-9 col-lg-9">
+      <svg id="chart" width="100%" v-bind:height="51 + ((cbdata.cdata.prices.length - 1) * 40)">
         <CandleChart :ch="cbdata.cdata"></CandleChart>
         <CandleStick :cs="cbdata.csdata"></CandleStick>
       </svg>
     </div>
-    <div class="col-sm-5 col-lg-5">
+    <div class="col-sm-4 col-md-3 col-lg-3">
       <div class="candle-controls">
         <div class="slidecontainer">
-          <label>Candle Position</label>
-          <input type="range" v-model="cbdata.csdata.bodyTop" min="0" max="250" step="5" class="slide">
+          <label>Up/Down</label>
+          <input type="range" v-model="cbdata.csdata.bodyTop" min="50" max="200" step="10" class="slide">
         </div>
         <div class="slidecontainer">
-          <label>Candle Body Size</label>
-          <input type="range" v-model="cbdata.csdata.bodyHeight" min="5" max="250" step="5" class="slide">
+          <label>Open/Close</label>
+          <input type="range" v-model="cbdata.csdata.bodyHeight" min="10" max="200" step="10" class="slide">
         </div>
         <div class="slidecontainer">
-          <label>Top Wick Length</label>
-          <input type="range" v-model="cbdata.csdata.wickTop" min="0" max="250" step="5" class="slide">
+          <label>High</label>
+          <input type="range" v-model="cbdata.csdata.wickTop" min="0" max="200" step="10" class="slide">
         </div>
         <div class="slidecontainer">
-          <label>Bottom Wick Length</label>
-          <input type="range" v-model="cbdata.csdata.wickBottom" min="0" max="250" step="5" class="slide">
+          <label>Low</label>
+          <input type="range" v-model="cbdata.csdata.wickBottom" min="0" max="200" step="10" class="slide">
         </div>
-        <p class="candle-color">Candle Color</p>
+        <p class="candle-color">Color</p>
         <label class="switch">
           <input type="checkbox" v-model="cbdata.csdata.candleRed">
           <span class="slider round"></span>
@@ -60,21 +60,25 @@ export default {
 <!-- CSS with 'builder' attribute for this component -->
 <style lang="scss" builder>
 
+  @import '../../Variables.scss';
+
   .candle-builder {
     padding: 20px 0 25px;
     margin-bottom: 15px;
 
     .candle-controls {
       margin: 40px 0 0 5px;
+      padding: 10px 7px 5px;
+      border-radius: 8px;
 
       .slidecontainer {
-        margin-bottom: 10px;
+        margin-bottom: 5px;
         width: 100%;
 
         label {
           display: block;
           color: #eee;
-          margin-bottom: 5px;
+          margin-bottom: 0px;
           font-size: 14px;
         }
 
@@ -102,7 +106,7 @@ export default {
           width: 20px;
           height: 20px;
           border-radius: 10px;
-          background: #62C848;
+          background: #fff;
           cursor: pointer;
         }
       }
@@ -133,7 +137,7 @@ export default {
           left: 0;
           right: 0;
           bottom: 0;
-          background-color: #62C848;
+          background-color: $green;
           -webkit-transition: .4s;
           transition: .4s;
         }
@@ -151,11 +155,11 @@ export default {
         }
 
         input:checked + .slider {
-          background-color: #E23B2B;
+          background-color: $red;
         }
 
         input:focus + .slider {
-          box-shadow: 0 0 1px #E23B2B;
+          box-shadow: 0 0 1px $red;
         }
 
         input:checked + .slider:before {
@@ -183,26 +187,31 @@ export default {
       }
 
     }
+  }
 
-    &.cb-dark {
-      background: #242a41;
+  .dark {
+    .candle-builder {
 
       .candle-controls {
+        background: $controls-dark-bg;
+        border-size: 1px;
+        border: 1px solid $controls-dark-border;
+
         .slidecontainer {
           label {
             color: #eee;
           }
 
           .slide {
-            background: #777;
+            background: $slide-dark-bg;
           }
 
           .slide::-webkit-slider-thumb {
-            background: #fff;
+            background: $slide-dark-handle;
           }
 
           .slide::-moz-range-thumb {
-            background: #fff;
+            background: $slide-dark-handle;
           }
 
         }
@@ -212,26 +221,31 @@ export default {
         }
       }
     }
+  }
 
-    &.cb-light {
-      background: none;
+
+  .light {
+    .candle-builder {
 
       .candle-controls {
+        background: $controls-light-bg;
+        border: 1px solid $controls-light-border;
+
         .slidecontainer {
           label {
             color: #333;
           }
 
           .slide {
-            background: #bbb;
+            background: $slide-light-bg;
           }
 
           .slide::-webkit-slider-thumb {
-            background: #555;
+            background: $slide-light-handle;
           }
 
           .slide::-moz-range-thumb {
-            background: #555;
+            background: $slide-light-handle;
           }
         }
 
