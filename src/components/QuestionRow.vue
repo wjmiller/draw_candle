@@ -61,7 +61,6 @@ export default {
 
   .dark {
     .question-row {
-      //border-top: 1px solid $pane-dark-border;
 
       .prompt {
         background: $pane-dark-bg;
@@ -73,7 +72,6 @@ export default {
 
   .light {
     .question-row {
-      //border-top: 1px solid #ddd;
 
       .prompt {
         background: $pane-light-bg;
