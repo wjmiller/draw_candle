@@ -2,7 +2,7 @@
   <b-container class="feedback">
     <b-row>
       <b-col>
-        <b-button size="sm" :disabled="!active" @click="revealFeedback()">{{buttonTitle}}</b-button>
+        <b-button class="feedback-btn" size="sm" :disabled="!active" @click="revealFeedback()">{{buttonTitle}}</b-button>
       </b-col>
     </b-row>
     <b-row>
@@ -37,6 +37,8 @@
 </template>
 
 <script>
+import fontAwesome from '../main.js'
+
 export default {
   name: 'CandleFeedback',
   props: {active: Boolean, feedbackData: Object, correct: Boolean, checked: Boolean},
@@ -65,35 +67,51 @@ export default {
 
 @import '../Variables.scss';
 
+.feedback {
+  .feedback-btn {
+    margin-top: 0px;
+
+    @media(min-width: 576px) {
+      margin-top: 20px;
+    }
+  }
+}
+
 .feedback-display {
-  min-height: 200px;
   position: relative;
+  margin: 20px 0;
+  padding: 10px;
+  border-radius: $border-radius;
+  min-height: 200px;
 }
 
-.feedback-message, .feedback-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 100%;
-  width: 100%;
-}
+.feedback-message {
+  font-size:  0.95em;
 
-.feedback-overlay {
-  opacity: 1;
-  transition: opacity 0.5s;
+  .feedback-correct {
+    color: $green;
+    margin-bottom: 5px;
+  }
+
+  .feedback-incorrect {
+    color: $red;
+    margin-bottom: 5px;
+  }
 }
 
 .dark {
-  .feedback-overlay {
-    background-color: $blue-dark;
+  .feedback-display {
+    background-color: $pane-dark-bg;
+    border: 1px solid $pane-dark-border;
+    color: $text-color-dark;
   }
 }
 
 .light {
-  .feedback-overlay {
-    background-color: #fff;
+  .feedback-display {
+    background: $pane-light-bg;
+    border: 1px solid $pane-light-border;
+    color: $text-color-light;
   }
 }
 

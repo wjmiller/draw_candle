@@ -8,7 +8,6 @@
 
 <script>
 import ActivityGroup from './components/ActivityGroup'
-import { eventBus } from './main.js';
 import AppData from './AppData.js'
 
 export default {

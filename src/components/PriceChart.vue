@@ -92,7 +92,7 @@ export default {
 
   .dark {
     .chart-bg {
-      fill: $blue-dark;
+      fill: $group-dark-bg;
     }
     .chart-num, .chart-time {
       fill: $chart-dark-text;
@@ -114,7 +114,7 @@ export default {
 
   .light {
     .chart-bg {
-      fill: #fff;
+      fill: $group-light-bg;
     }
     .chart-num, .chart-time {
       fill:$chart-light-text;

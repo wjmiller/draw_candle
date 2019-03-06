@@ -1,23 +1,27 @@
 <!-- Template -->
 <template>
   <div class="row candle-builder">
-    <div class="col-sm-8 col-md-9 col-lg-9">
+    <div class="col-sm-8 col-md-8 col-lg-8">
       <svg id="chart" width="100%" v-bind:height="51 + ((cbdata.cdata.prices.length - 1) * 40)">
         <g>
           <rect width="100%" height="100%" class="chart-bg"></rect>
           <text x="0" y="15" class="chart-num">Price</text>
           <text v-for="(price,index) in cbdata.cdata.prices" :key="'price-' + index" x="0" v-bind:y="50 + (40 * index)" class="chart-num">{{price}}</text>
-          <line v-for="(price,index) in cbdata.cdata.prices" :key="'line-' + index" x1="50" v-bind:y1="50 + (40 * index)" x2="100%" v-bind:y2="50 + (40 * index)" class="chart-line" />
+          <line v-for="(price,index) in cbdata.cdata.prices" :key="'line-' + index" x1="50" v-bind:y1="50 + (40 * index)" x2="96%" v-bind:y2="50 + (40 * index)" class="chart-pline" />
         </g>
         <g>
-          <line x1="165" v-bind:y1="chartBodyTop" x2="165" v-bind:y2="chartWickTop" class="candle-wick" />
-          <rect :x="135" v-bind:y="chartBodyTop" width="60" v-bind:height="chartBodyHeight" v-bind:class="chartBodyColor"/>
-          <line x1="165" v-bind:y1="chartBodyHeight + chartBodyTop" x2="165" v-bind:y2="chartWickBottom" class="candle-wick"/>
+          <line x1="155" v-bind:y1="chartBodyTop" x2="155" v-bind:y2="chartWickTop" class="candle-wick" />
+          <rect :x="125" v-bind:y="chartBodyTop" width="60" v-bind:height="chartBodyHeight" v-bind:class="chartBodyColor"/>
+          <line x1="155" v-bind:y1="chartBodyHeight + chartBodyTop" x2="155" v-bind:y2="chartWickBottom" class="candle-wick"/>
         </g>
       </svg>
     </div>
-    <div class="col-sm-4 col-md-3 col-lg-3">
+    <div class="col-sm-4 col-md-4 col-lg-4">
       <div class="candle-controls">
+        <div class="slidecontainer">
+          <label>Top Wick</label>
+          <input type="range" v-model="rangeWickTop" min="0" max="10" step="1" class="slide" @input="changeCandle('WickTop')">
+        </div>
         <div class="slidecontainer">
           <label>Top of Body</label>
           <input type="range" v-model="rangeBodyTop" min="0" max="10" step="1" class="slide" @input="changeCandle('BodyTop')">
@@ -25,10 +29,6 @@
         <div class="slidecontainer">
           <label>Bottom of Body</label>
           <input type="range" v-model="rangeBodyBottom" min="0" max="10" step="1" class="slide" @input="changeCandle('BodyBottom')">
-        </div>
-        <div class="slidecontainer">
-          <label>Top Wick</label>
-          <input type="range" v-model="rangeWickTop" min="0" max="10" step="1" class="slide" @input="changeCandle('WickTop')">
         </div>
         <div class="slidecontainer">
           <label>Bottom Wick</label>
@@ -134,9 +134,34 @@ export default {
     padding: 20px 0 25px;
     margin-bottom: 15px;
 
+    .chart-num {
+      font: 14px 'Roboto';
+    }
+
+    .candle-green {
+      fill:$green;
+    }
+
+    .candle-red {
+      fill:$red;
+    }
+
+    .candle-wick {
+      stroke-width:2;
+    }
+
+    .chart-pline {
+      stroke-width:1;
+      stroke-dasharray: 5;
+
+      &:last-child {
+        stroke-dasharray: 0;
+      }
+    }
+
     .candle-controls {
       margin: 40px 0 0 5px;
-      padding: 10px 7px 5px;
+      padding: 7px 10px 2px;
       border-radius: 8px;
 
       .slidecontainer {
@@ -236,7 +261,6 @@ export default {
           transform: translateX(19px);
         }
 
-        /* Rounded sliders */
         .slider.round {
           border-radius: 34px;
         }
@@ -247,7 +271,7 @@ export default {
       }
 
       @media(min-width: 576px) {
-        margin: 10px 0 0 0;
+        margin: 0;
 
         .slide {
           width: 150px;
@@ -255,15 +279,29 @@ export default {
       }
 
     }
+
   }
 
   .dark {
     .candle-builder {
 
+      .chart-bg {
+        fill: $group-dark-bg;
+      }
+      .chart-num {
+        fill: #ddd;
+      }
+      .chart-pline {
+        stroke:#888;
+      }
+
+      .candle-wick {
+        stroke: $gray;
+      }
+
       .candle-controls {
-        background: $controls-dark-bg;
-        border-size: 1px;
-        border: 1px solid $controls-dark-border;
+        background: $pane-dark-bg;
+        border: 1px solid $pane-dark-border;
 
         .slidecontainer {
           label {
@@ -288,16 +326,30 @@ export default {
           color: #eee;
         }
       }
+
     }
   }
-
 
   .light {
     .candle-builder {
 
+      .chart-bg {
+        fill: $group-light-bg;
+      }
+      .chart-num {
+        fill: #333;
+      }
+      .chart-pline {
+        stroke:#999;
+      }
+
+      .candle-wick {
+        stroke: #444;
+      }
+
       .candle-controls {
-        background: $controls-light-bg;
-        border: 1px solid $controls-light-border;
+        background: $pane-light-bg;
+        border: 1px solid $pane-light-border;
 
         .slidecontainer {
           label {
@@ -323,68 +375,6 @@ export default {
       }
     }
   }
-
-
-  .chart-num {
-    font: 14px 'Roboto';
-  }
-
-  .chart-pline {
-    stroke-width:1;
-    stroke-dasharray: 5;
-
-    &:last-child {
-      stroke-dasharray: 0;
-    }
-  }
-
-  .dark {
-    .chart-bg {
-      fill: $blue-dark;
-    }
-    .chart-num {
-      fill: #ddd;
-    }
-    .chart-pline {
-      stroke:#888;
-    }
-  }
-
-  .light {
-    .chart-bg {
-      fill: #fff;
-    }
-    .chart-num {
-      fill: #333;
-    }
-    .chart-pline {
-      stroke:#999;
-    }
-  }
-
-  .candle-green {
-      fill:$green;
-    }
-
-    .candle-red {
-      fill:$red;
-    }
-
-    .candle-wick {
-      stroke-width:2;
-    }
-
-    .dark {
-      .candle-wick {
-        stroke: $gray;
-      }
-    }
-
-    .light {
-      .candle-wick {
-        stroke: #444;
-      }
-    }
 
 
 </style>
