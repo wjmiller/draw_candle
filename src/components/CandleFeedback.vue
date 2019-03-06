@@ -23,7 +23,7 @@
                 Adjust the closing price by ${{feedbackData.close}}
               </div>
               <div class="message-high" v-if="feedbackData.high !== 0">
-                Adjust the high price by ${{feedbackData.open}}
+                Adjust the high price by ${{feedbackData.high}}
               </div>
               <div class="message-low" v-if="feedbackData.low !== 0">
                 Adjust the low price by ${{feedbackData.low}}
@@ -46,11 +46,6 @@ export default {
     return {
       revealed: false,
       buttonTitle: 'Check My Candlestick'
-    }
-  },
-  watch: {
-    feedbackData () {
-      this.revealed = false;
     }
   },
   methods: {
