@@ -37,6 +37,12 @@ export default {
 
 @import '../Variables.scss';
 
+.question-open {
+  > div:first-child {
+    //font-size: 1.05em;
+  }
+}
+
 .response {
   width: 100%;
   height: 120px;
@@ -44,10 +50,15 @@ export default {
   border-radius: 8px;
 }
 .dark {
+
+  .question-open {
+    color: $text-color-dark;
+  }
+
   .response {
-    border-color: $controls-dark-border;
-    background: $controls-dark-bg;
-    color: #fff;
+    border-color: $pane-dark-border;
+    background: $pane-dark-bg;
+
 
     &:focus, &:active {
       outline: 5px solid rgba(255,255,255,0.2);
@@ -56,9 +67,14 @@ export default {
 }
 
 .light {
+
+  .question-open {
+    color: $text-color-light;
+  }
+
   .response {
-    border-color: $controls-light-border;
-    background: $controls-light-bg;
+    border-color: $pane-light-border;
+    background: $pane-light-bg;
     color: #333;
   }
 }

@@ -1,13 +1,8 @@
 <template lang="html">
-  <b-container class="feedback">
-    <b-row>
-      <b-col>
-        <b-button size="sm" :disabled="!active" @click="revealFeedback()">{{buttonTitle}}</b-button>
-      </b-col>
-    </b-row>
-    <b-row>
-      <b-col>
-        <div class="feedback-display">
+  <div class="feedback">
+    <b-button class="feedback-btn" size="sm" :disabled="!active" @click="revealFeedback()">{{buttonTitle}}</b-button>
+    <div>
+      <div class="feedback-display">
           <div class="feedback-message" v-if="revealed">
             <div class="feedback-correct" v-if="correct && revealed">
               Correct
@@ -31,12 +26,12 @@
             </div>
           </div>
         </div>
-      </b-col>
-    </b-row>
-  </b-container>
+    </div>
+  </div>
 </template>
 
 <script>
+
 export default {
   name: 'CandleFeedback',
   props: {active: Boolean, feedbackData: Object, correct: Boolean, checked: Boolean},
@@ -60,35 +55,63 @@ export default {
 
 @import '../Variables.scss';
 
+.feedback {
+
+  .feedback-btn {
+    margin-top: 25px;
+    font-size: 0.95em;
+    display: block;
+    width: 100%;
+
+    @media(min-width: 576px) {
+      margin-top: 44px;
+    }
+  }
+}
+
 .feedback-display {
-  min-height: 200px;
   position: relative;
+  margin: 20px 0;
+  padding: 10px;
+  border-radius: $border-radius;
+  min-height: 60px;
+
+  @media(min-width: 768px) {
+    min-height: 215px;
+  }
 }
 
-.feedback-message, .feedback-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 100%;
-  width: 100%;
-}
+.feedback-message {
+  font-size:  0.95em;
 
-.feedback-overlay {
-  opacity: 1;
-  transition: opacity 0.5s;
+  .feedback-correct {
+    font-size:  1.2em;
+    font-weight: 600;
+    color: $green;
+    margin-bottom: 5px;
+  }
+
+  .feedback-incorrect {
+    font-size:  1.2em;
+    font-weight: 600;
+    color: $red;
+    margin-bottom: 5px;
+  }
 }
 
 .dark {
-  .feedback-overlay {
-    background-color: $blue-dark;
+  .feedback-display {
+    background-color: darken($pane-dark-bg, 2%);
+    border: 1px solid darken($pane-dark-border, 2%);
+    color: $text-color-dark;
   }
 }
 
 .light {
-  .feedback-overlay {
-    background-color: #fff;
+  .feedback-display {
+    background: $pane-light-bg;
+    border: 1px solid $pane-light-border;
+    color: $text-color-light;
   }
 }
 

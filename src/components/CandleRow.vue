@@ -50,5 +50,40 @@ export default {
 }
 </script>
 
-<style lang="css" scoped>
+<style lang="scss" crow>
+
+  @import '../Variables.scss';
+
+  .activity-group {
+    .candle-row {
+      padding-bottom: 30px;
+      margin-bottom: 50px;
+
+      @media(min-width: 576px) {
+        padding-bottom: 5px;
+        margin-bottom: 25px;
+      }
+    }
+  }
+
+  .dark {
+    .activity-group {
+      .candle-row {
+        border-bottom: 1px solid lighten($pane-dark-border, 10%);
+
+        @media(min-width: 576px) {
+          border-bottom: 1px solid $pane-dark-border;
+        }
+      }
+    }
+  }
+
+  .light {
+    .activity-group {
+      .candle-row {
+        border-bottom: 1px solid $pane-light-border;
+      }
+    }
+  }
+
 </style>
