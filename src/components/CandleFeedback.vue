@@ -2,17 +2,33 @@
   <b-container class="feedback">
     <b-row>
       <b-col>
-        <b-button size="sm" :disabled="activeFeedback" @click="revealFeedback()">{{buttonTitle}}</b-button>
+        <b-button size="sm" :disabled="!active" @click="revealFeedback()">{{buttonTitle}}</b-button>
       </b-col>
     </b-row>
     <b-row>
       <b-col>
         <div class="feedback-display">
-          <div class="feedback-message">
-              {{message}}
-          </div>
-          <div class="feedback-overlay" v-bind:class="{hidden: revealed}">
-            {{inactiveMessage}}
+          <div class="feedback-message" v-if="revealed">
+            <div class="feedback-correct" v-if="correct && revealed">
+              Correct
+            </div>
+            <div class="feedback-incorrect" v-if="!correct && revealed">
+              Incorrect
+            </div>
+            <div class="feedback-message">
+              <div class="message-open" v-if="feedbackData.open !== 0">
+                Adjust the opening price by ${{feedbackData.open}}
+              </div>
+              <div class="message-close" v-if="feedbackData.close !== 0">
+                Adjust the closing price by ${{feedbackData.close}}
+              </div>
+              <div class="message-high" v-if="feedbackData.high !== 0">
+                Adjust the high price by ${{feedbackData.open}}
+              </div>
+              <div class="message-low" v-if="feedbackData.low !== 0">
+                Adjust the low price by ${{feedbackData.low}}
+              </div>
+            </div>
           </div>
         </div>
       </b-col>
@@ -23,18 +39,16 @@
 <script>
 export default {
   name: 'CandleFeedback',
-  props: {active: Boolean, feedback: Object},
+  props: {active: Boolean, feedbackData: Object, correct: Boolean, checked: Boolean},
   data () {
     return {
       revealed: false,
-      message: 'this is a test',
-      inactiveMessage: 'this is not yet active',
       buttonTitle: 'Check My Candlestick'
     }
   },
-  computed: {
-    activeFeedback () {
-      return !this.active;
+  watch: {
+    feedbackData () {
+      this.revealed = false;
     }
   },
   methods: {

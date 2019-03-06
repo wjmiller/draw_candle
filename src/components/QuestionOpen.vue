@@ -1,6 +1,6 @@
 <template lang="html">
   <b-row class="question-open">
-    <b-col md="4">{{instruction}}</b-col>
+    <b-col md="4">{{question}}</b-col>
     <b-col md="8">
       <textarea class="response" type="text" @keyup="isValid" v-model="response"></textarea>
       <span>{{response.length}}</span>
@@ -11,11 +11,11 @@
 <script>
 export default {
   name: "QuestionOpen",
-  props: ["active"],
+  props: ["active", "question"],
   data () {
     return {
       valid: false,
-      minimumChar: 100,
+      minimumChar: 50,
       instruction: 'Question goes here',
       response: ''
     }

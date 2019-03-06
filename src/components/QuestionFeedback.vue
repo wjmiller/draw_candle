@@ -9,7 +9,7 @@
       <b-col>
         <div class="feedback-display">
           <div class="feedback-message">
-              {{message}}
+              {{feedback.correct}}
           </div>
           <div class="feedback-overlay" v-bind:class="{hidden: revealed}">
             {{inactiveMessage}}
