@@ -14,9 +14,9 @@
           <text v-for="(time,index) in pcdata.timeIntervals" :key="'time-' + index" v-bind:x="66 + (40 * index)" v-bind:y="74 + (40 * (pcdata.prices.length - 1))" class="chart-time">{{time}}</text>
           <text v-bind:x="120 + (40 * (pcdata.timeIntervals.length - 1))" v-bind:y="74 + (40 * (pcdata.prices.length - 1))" class="chart-num">{{pcdata.timeLabel}}</text>
           <g>
-            <line v-for="(point,index) in pricePointData" :key="'ppline-' + index" v-bind:x1="point[0]" v-bind:y1="point[2]" v-bind:x2="point[1]" v-bind:y2="point[3]" class="chart-ppline" />
+            <line v-for="(point,index) in pricePointData.lines" :key="'ppline-' + index" v-bind:x1="point[0]" v-bind:y1="point[1]" v-bind:x2="point[2]" v-bind:y2="point[3]" class="chart-ppline" />
           </g>
-          <circle v-for="(point,index) in pricePointData" :key="'ppoint-' + index" v-bind:cx="point[0]" v-bind:cy="point[2]" r="5" class="price-point"></circle>
+          <circle v-for="(point,index) in pricePointData.points" :key="'ppoint-' + index" v-bind:cx="point[0]" v-bind:cy="point[1]" r="5" class="price-point"></circle>
         </g>
       </svg>
     </div>
@@ -31,21 +31,28 @@ export default {
   props: ['pcdata'],
   data() {
     return {
-      pricePointData: []
+      pricePointData: [],
+      chartTick: 40,
+      pointMargin: 70,
+      lineMargin: 50,
+      priceBase: 10
     }
   },
   created() {
-    for (let i = 0; i <= this.pcdata.pricePoints.length - 1; i++) {
-      const priceIndex1 = this.pcdata.prices.indexOf(this.pcdata.pricePoints[i]);
-      const priceIndex2 = this.pcdata.prices.indexOf(this.pcdata.pricePoints[i + 1]);
-      this.pricePointData.push([
-        70 + (i * 40),
-        70 + ((i + 1) * 40),
-        50 + (priceIndex1 * 40),
-        50 + (priceIndex2 * 40)
-      ]);
-    }
-
+    this.pricePointData = this.pcdata.pricePoints.reduce((memo, price, ix, arr) => {
+      const px = this.pointMargin + (ix * this.chartTick);
+      const py = this.lineMargin + ((this.priceBase - price) * this.chartTick/2);
+      memo.points.push([px, py]);
+      if (arr[ix + 1]) {
+        memo.lines.push([
+          px,
+          py,
+          this.pointMargin + ((ix + 1) * this.chartTick),
+          this.lineMargin + ((this.priceBase - arr[ix + 1]) * this.chartTick/2)
+        ]);
+      }
+      return memo;
+    }, {lines: [], points: []});
   }
 }
 
@@ -80,10 +87,6 @@ export default {
 
   .chart-ppline {
     stroke-width: 3;
-  }
-
-  .chart-ppline:last-child {
-    display:none;
   }
 
   .chart-tline {
