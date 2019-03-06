@@ -22,7 +22,7 @@ export default {
     return {
       revealed: false,
       message: 'this is a test',
-      inactiveMessage: 'this is not yet active',
+      inactiveMessage: 'You must type 50 characters or more of your own response to compare.',
       buttonTitle: 'Compare My Response'
     }
   },

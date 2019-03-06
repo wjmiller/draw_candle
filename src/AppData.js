@@ -1,6 +1,7 @@
 const AppData = {
   activities: [{
       id: "samecandle",
+      title: "Candle Builder Activity #1",
       candles: [{
           pricechart: {},
           candlechart: {
@@ -54,6 +55,7 @@ const AppData = {
     },
     {
       id: "nowick",
+      title: "Candle Builder Activity #2",
       candles: [{
           pricechart: {},
           candlechart: {
@@ -107,6 +109,7 @@ const AppData = {
     },
     {
       id: "differentcolor",
+      title: "Candle Builder Activity #3",
       candles: [{
           pricechart: {},
           candlechart: {
@@ -160,6 +163,7 @@ const AppData = {
     },
     {
       id: "shortbodywick",
+      title: "Candle Builder Activity #4",
       candles: [{
           pricechart: {},
           candlechart: {
@@ -213,6 +217,7 @@ const AppData = {
     },
     {
       id: "shortbodylongwick",
+      title: "Candle Builder Activity #5",
       candles: [{
           pricechart: {},
           candlechart: {
@@ -266,6 +271,7 @@ const AppData = {
     },
     {
       id: "longbodywick",
+      title: "Candle Builder Activity #6",
       candles: [{
           pricechart: {},
           candlechart: {
