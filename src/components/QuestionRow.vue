@@ -52,10 +52,12 @@ export default {
     }
 
     .prompt{
-      display: block;
       padding: 10px 15px;
       border-radius: 8px;
-      min-height: 160px
+      min-height: 160px;
+      display: inline-flex;
+      align-items: center;
+      width: 100%;
     }
   }
 
