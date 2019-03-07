@@ -7,7 +7,7 @@
       <CandleBuilder :cbdata="candle.candlechart" v-on:candleChange="isCorrect"></CandleBuilder>
     </div>
     <div class="col-sm-12 col-md-12 col-lg-3">
-      <CandleFeedback :active="active" :feedbackData="feedbackData" :correct="correct" :checked="checked"/>
+      <CandleFeedback :active="active" :feedbackData="feedbackData" :correct="correct" :checked="checked" :theme="candle.candlechart.theme"/>
     </div>
   </div>
 </template>

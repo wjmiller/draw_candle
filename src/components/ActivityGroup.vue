@@ -46,7 +46,7 @@ export default {
   border-radius: $border-radius;
   margin-bottom: 60px;
 
-  p {
+  > p {
     margin-bottom: 35px;
     font-style: italic;
   }

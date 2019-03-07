@@ -7,7 +7,6 @@ const AppData = {
           candlechart: {
             theme: 'dark',
             cdata: {
-              theme: 'dark',
               prices: [10, 8, 6, 4, 2, 0],
               timeIntervals: ['10', '11', '12', '13', '14', '15'],
               timeLabel: 'Hr',
@@ -28,7 +27,6 @@ const AppData = {
           candlechart: {
             theme: 'dark',
             cdata: {
-              theme: 'dark',
               prices: [10, 8, 6, 4, 2, 0],
               timeIntervals: ['2/22', '2/25', '2/26', '2/27', '2/28'],
               timeLabel: 'Day',
@@ -61,7 +59,6 @@ const AppData = {
           candlechart: {
             theme: 'dark',
             cdata: {
-              theme: 'dark',
               prices: [10, 8, 6, 4, 2, 0],
               timeIntervals: ['2/22', '2/25', '2/26', '2/27', '2/28'],
               timeLabel: 'Day',
@@ -82,7 +79,6 @@ const AppData = {
           candlechart: {
             theme: 'dark',
             cdata: {
-              theme: 'dark',
               prices: [10, 8, 6, 4, 2, 0],
               timeIntervals: ['10', '11', '12', '13', '14', '15'],
               timeLabel: 'Hr',
@@ -115,7 +111,6 @@ const AppData = {
           candlechart: {
             theme: 'dark',
             cdata: {
-              theme: 'dark',
               prices: [10, 8, 6, 4, 2, 0],
               timeIntervals: ['10', '11', '12', '13', '14', '15'],
               timeLabel: 'Hr',
@@ -136,7 +131,6 @@ const AppData = {
           candlechart: {
             theme: 'dark',
             cdata: {
-              theme: 'dark',
               prices: [10, 8, 6, 4, 2, 0],
               timeIntervals: ['2/22', '2/25', '2/26', '2/27', '2/28'],
               timeLabel: 'Day',
@@ -169,7 +163,6 @@ const AppData = {
           candlechart: {
             theme: 'dark',
             cdata: {
-              theme: 'dark',
               prices: [10, 8, 6, 4, 2, 0],
               timeIntervals: ['10', '11', '12', '13', '14', '15'],
               timeLabel: 'Hr',
@@ -190,7 +183,6 @@ const AppData = {
           candlechart: {
             theme: 'dark',
             cdata: {
-              theme: 'dark',
               prices: [10, 8, 6, 4, 2, 0],
               timeIntervals: ['2/22', '2/25', '2/26', '2/27', '2/28'],
               timeLabel: 'Day',
@@ -223,7 +215,6 @@ const AppData = {
           candlechart: {
             theme: 'dark',
             cdata: {
-              theme: 'dark',
               prices: [10, 8, 6, 4, 2, 0],
               timeIntervals: ['10', '11', '12', '13', '14', '15'],
               timeLabel: 'Hr',
@@ -244,7 +235,6 @@ const AppData = {
           candlechart: {
             theme: 'dark',
             cdata: {
-              theme: 'dark',
               prices: [10, 8, 6, 4, 2, 0],
               timeIntervals: ['2/22', '2/25', '2/26', '2/27', '2/28'],
               timeLabel: 'Day',
@@ -277,7 +267,6 @@ const AppData = {
           candlechart: {
             theme: 'dark',
             cdata: {
-              theme: 'dark',
               prices: [10, 8, 6, 4, 2, 0],
               timeIntervals: ['10', '11', '12', '13', '14', '15'],
               timeLabel: 'Hr',
@@ -298,7 +287,6 @@ const AppData = {
           candlechart: {
             theme: 'dark',
             cdata: {
-              theme: 'dark',
               prices: [10, 8, 6, 4, 2, 0],
               timeIntervals: ['2/22', '2/25', '2/26', '2/27', '2/28'],
               timeLabel: 'Day',
