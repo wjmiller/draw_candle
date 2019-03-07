@@ -71,13 +71,13 @@ export default {
 
 .feedback-display {
   position: relative;
-  margin: 20px 0;
+  margin: 18px 0;
   padding: 10px;
   border-radius: $border-radius;
-  min-height: 60px;
+  min-height: 145px;
 
-  @media(min-width: 768px) {
-    min-height: 215px;
+  @media(min-width: 769px) {
+    min-height: 214px;
   }
 }
 
@@ -87,7 +87,6 @@ export default {
   .feedback-correct {
     font-size:  1.2em;
     font-weight: 600;
-    color: $green;
     margin-bottom: 5px;
   }
 
@@ -105,6 +104,12 @@ export default {
     border: 1px solid darken($pane-dark-border, 2%);
     color: $text-color-dark;
   }
+
+  .feedback-message {
+    .feedback-correct {
+      color: $green;
+    }
+  }
 }
 
 .light {
@@ -112,6 +117,12 @@ export default {
     background: $pane-light-bg;
     border: 1px solid $pane-light-border;
     color: $text-color-light;
+  }
+
+  .feedback-message {
+    .feedback-correct {
+      color: darken($green, 10%);
+    }
   }
 }
 

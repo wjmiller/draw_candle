@@ -15,7 +15,7 @@
           </g>
           <line v-for="(time,index) in pcdata.timeIntervals" :key="'tline-' + index" v-bind:x1="70 + (40 * index)" v-bind:y1="58 + (40 * (pcdata.prices.length - 1))" v-bind:x2="70 + (40 * index)" v-bind:y2="50 + (40 * (pcdata.prices.length - 1))" class="chart-tline" />
           <text v-for="(time,index) in pcdata.timeIntervals" :key="'time-' + index" v-bind:x="66 + (40 * index)" v-bind:y="74 + (40 * (pcdata.prices.length - 1))" class="chart-time">{{time}}</text>
-          <text v-bind:x="120 + (40 * (pcdata.timeIntervals.length - 1))" v-bind:y="74 + (40 * (pcdata.prices.length - 1))" class="chart-num">{{pcdata.timeLabel}}</text>
+          <text v-bind:x="113 + (40 * (pcdata.timeIntervals.length - 1))" v-bind:y="74 + (40 * (pcdata.prices.length - 1))" class="chart-num">{{pcdata.timeLabel}}</text>
           <g>
             <line v-for="(point,index) in pricePointData.lines" :key="'ppline-' + index" v-bind:x1="point[0]" v-bind:y1="point[1]" v-bind:x2="point[2]" v-bind:y2="point[3]" class="chart-ppline" />
           </g>

@@ -10,18 +10,19 @@ $gray-light: #777;
 
 $text-color-light: #333;
 $header-color-dark: #fff;
-$text-color-dark: lighten($blue-dark, 80%);
-$border-radius: 8px;
+$text-color-dark: lighten($blue-dark, 75%);
+$border-radius: 6px;
 
 $body-dark-bg: #f8f8f8; //darken($blue-dark, 5%);
 $group-dark-bg: $blue-dark;
 $group-dark-border: lighten($blue-dark, 10%);
 
+$body-light-bg: #f8f8f8;
 $group-light-bg: #fff;
-$group-light-border: #ccc;
+$group-light-border: #bbb;
 
 $pane-light-bg: #fcfcfc;
-$pane-light-border: #ccc;
+$pane-light-border: #bbb;
 $pane-dark-bg: lighten($blue-dark, 5%);
 $pane-dark-border: lighten($blue-dark, 10%);
 
