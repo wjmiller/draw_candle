@@ -10,6 +10,19 @@
 import ActivityGroup from './components/ActivityGroup'
 import AppData from './AppData.js'
 
+AppData.activities.forEach(activity => activity.candles.forEach(candle => {
+  const prices = candle.candlechart.cdata.pricePoints;
+  const close = prices.slice(-1)[0]
+  const open = prices[0];
+  candle.candlechart.csdata = {
+    open: open,
+    close: close,
+    high: Math.max(...prices),
+    low: Math.min(...prices),
+    candleRed:  open > close
+  }
+}));
+
 export default {
   name: 'app',
   data() {
