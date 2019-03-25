@@ -1,7 +1,7 @@
 <template>
-  <div id="app">
+  <div id="app" v-bind:class="{'light': theme === 'light', 'dark':theme === 'dark'}">
     <div class="container">
-      <ActivityGroup v-for="activity in activities" :activity="activity"/>
+      <ActivityGroup v-for="(activity, index) in activities" :key="'act-group-' + index" :activity="activity" :theme="theme"/>
     </div>
   </div>
 </template>

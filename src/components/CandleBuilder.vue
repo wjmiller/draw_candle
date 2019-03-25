@@ -137,11 +137,10 @@ export default {
     margin-bottom: 15px;
 
     h3 {
-      font-size: 0.95em;
+      font-size: 1em;
       text-align: center;
-      padding: 4px 10px;
-      margin-bottom: 15px;
-      border-radius: 20px;
+      margin-bottom: 5px;
+      border-radius: $border-radius;
     }
 
     .chart-num {
@@ -172,7 +171,7 @@ export default {
     .candle-controls {
       margin: 40px 0 0 5px;
       padding: 7px 10px 2px;
-      border-radius: 8px;
+      border-radius: $border-radius;
 
       .slidecontainer {
         margin-bottom: 5px;
@@ -296,8 +295,8 @@ export default {
     .candle-builder {
 
       h3 {
-        background: $pane-dark-bg;
-        border: 1px solid $pane-dark-border;
+        //background: $pane-dark-bg;
+        //border: 1px solid $pane-dark-border;
       }
 
       .chart-bg {
@@ -349,8 +348,8 @@ export default {
     .candle-builder {
 
       h3 {
-        background: $pane-light-bg;
-        border: 1px solid $pane-light-border;
+        //background: $pane-light-bg;
+        //border: 1px solid $pane-light-border;
       }
 
       .chart-bg {

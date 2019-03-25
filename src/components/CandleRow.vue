@@ -7,7 +7,7 @@
       <CandleBuilder :cbdata="candle.candlechart" v-on:candleChange="isCorrect"></CandleBuilder>
     </div>
     <div class="col-sm-12 col-md-12 col-lg-3">
-      <CandleFeedback :active="active" :feedbackData="feedbackData" :correct="correct" :checked="checked" :theme="candle.candlechart.theme"/>
+      <CandleFeedback :theme="theme" :active="active" :feedbackData="feedbackData" :correct="correct" :checked="checked"/>
     </div>
   </div>
 </template>
@@ -19,7 +19,7 @@ import CandleFeedback from './CandleFeedback.vue'
 
 export default {
   name: 'CandleRow',
-  props: ['candle'],
+  props: ['candle', 'theme'],
   data () {
     return {
       active: true,

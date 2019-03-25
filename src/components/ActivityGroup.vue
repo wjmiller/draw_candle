@@ -2,7 +2,7 @@
   <div class="activity-group">
     <h2>{{activity.title}}</h2>
     <p>{{activity.questions[0].instruction}}</p>
-    <CandleRow v-for="(candle, ix) in activity.candles" :candle="candle" :key="`${activity.id}-${ix}-candle`" v-on:candle-correct="checkCandles($event, ix)"/>
+    <CandleRow v-for="(candle, ix) in activity.candles" :theme="theme" :candle="candle" :key="`${activity.id}-${ix}-candle`" v-on:candle-correct="checkCandles($event, ix)"/>
     <QuestionRow v-for="(question, ix) in activity.questions" :question="question" :key="`${activity.id}-${ix}-question`" :active="openQuestion"/>
   </div>
 </template>
@@ -13,7 +13,7 @@ import QuestionRow from './QuestionRow'
 
 export default {
   name: 'ActivityGroup',
-  props: ['activity'],
+  props: ['activity', 'theme'],
   data () {
     return {
       candlesCorrect: [],

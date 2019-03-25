@@ -48,12 +48,13 @@ export default {
 
 
     h4 {
+      font-size: 1.1em;
       margin-bottom: 14px;
     }
 
     .prompt{
       padding: 10px 15px;
-      border-radius: 8px;
+      border-radius: $border-radius;
       min-height: 160px;
       display: inline-flex;
       align-items: center;

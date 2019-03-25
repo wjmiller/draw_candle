@@ -60,12 +60,12 @@ export default {
 
   .feedback-btn {
     margin-top: 25px;
-    font-size: 0.95em;
+    font-size: 0.90em;
     display: block;
     width: 100%;
 
     @media(min-width: 576px) {
-      margin-top: 44px;
+      margin-top: 22px;
     }
   }
 }

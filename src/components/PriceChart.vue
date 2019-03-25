@@ -70,11 +70,10 @@ export default {
     margin-bottom: 15px;
 
     h3 {
-      font-size: 0.95em;
+      font-size: 1em;
       text-align: center;
-      padding: 4px 10px;
-      margin-bottom: 15px;
-      border-radius: 20px;
+      margin-bottom: 5px;
+      border-radius: $border-radius;
     }
   }
 
@@ -105,13 +104,6 @@ export default {
 
   .dark {
 
-    .price-chart {
-      h3 {
-        background: $pane-dark-bg;
-        border: 1px solid $pane-dark-border;
-      }
-    }
-
     .chart-bg {
       fill: $group-dark-bg;
     }
@@ -134,13 +126,6 @@ export default {
   }
 
   .light {
-
-    .price-chart {
-      h3 {
-        background: $pane-light-bg;
-        border: 1px solid $pane-light-border;
-      }
-    }
 
     .chart-bg {
       fill: $group-light-bg;

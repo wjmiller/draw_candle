@@ -1,19 +1,24 @@
-$blue-dark: rgb(26, 28, 45);
-$green: rgb(99, 200, 72);
-$red: rgb(231, 50, 37);
-$gray: rgb(102, 103, 107);
-$magenta: rgb(232, 116, 248);
-$maroon: rgb(137, 52, 63);
-$blue-med: rgb(41,101,149);
-$gray-dark: rgb(64, 69, 90);
-$gray-light: #777;
+
+$blue-black: #0B0D17;
+$blue-dark: #191C2C;
+$green: #5AC848;
+$red: #E73225;
+$gray: #66676B;
+$orange: #FC5423;
+$magenta: #E874F8;
+$purple: #8991fa;
+$maroon: #89343F;
+$blue-med: #296595;
+$gray-dark: #40455A;
+$gray-light: #7E8195;
 
 $text-color-light: #333;
 $header-color-dark: #fff;
 $text-color-dark: lighten($blue-dark, 75%);
-$border-radius: 6px;
+$border-radius: 0;
+$border-radius-btn: 30px;
 
-$body-dark-bg: #f8f8f8; //darken($blue-dark, 5%);
+$body-dark-bg: #f8f8f8;
 $group-dark-bg: $blue-dark;
 $group-dark-border: lighten($blue-dark, 10%);
 
@@ -29,12 +34,12 @@ $pane-dark-border: lighten($blue-dark, 10%);
 $chart-dark-text: #fff;
 $chart-dark-lines: #888;
 $chart-dark-curve: #555;
-$chart-dark-points: $magenta;
+$chart-dark-points: $purple;
 
 $chart-light-text: #333;
 $chart-light-lines: #999;
 $chart-light-curve: #bbb;
-$chart-light-points: $blue-med;
+$chart-light-points: $gray-dark;
 
 $slide-dark-bg: $blue-dark;
 $slide-dark-handle: lighten($blue-dark, 60%);
