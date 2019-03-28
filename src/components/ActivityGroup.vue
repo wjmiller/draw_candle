@@ -66,41 +66,40 @@ export default {
 @import '../Variables.scss';
 
 .activity-group {
-  padding: 25px 30px;
-  border-radius: $border-radius;
-  margin-bottom: 60px;
+    border-radius: $border-radius;
+    margin-bottom: 100px;
 
-  > p {
-    margin-bottom: 35px;
-    font-style: italic;
-  }
+    > p {
+        font-size: 1em;
+        margin-bottom: 35px;
+        font-style: italic;
+    }
 }
 
 .dark {
-  .activity-group {
-    background: $group-dark-bg;
-    border: 1px solid $group-dark-border;
-    color: $text-color-dark;
+    .activity-group {
+        background: $group-dark-bg;
+        color: $text-color-dark;
 
-    h2 {
-      color: $header-color-dark;
-    }
+        h2 {
+            color: $header-color-dark;
+        }
 
-    p {
-      color: $text-color-dark;
+        p {
+            color: $text-color-dark;
+        }
     }
-  }
 }
 
 .light {
-  .activity-group {
-    background: $group-light-bg;
-    border: 1px solid $group-light-border;
-    color: $text-color-light;
+    .activity-group {
+        background: $group-light-bg;
+        //border: 1px solid $group-light-border;
+        color: $text-color-light;
 
-    p {
-      color: lighten($text-color-light, 25%);
+        p {
+            color: $text-color-light;
+        }
     }
-  }
 }
 </style>

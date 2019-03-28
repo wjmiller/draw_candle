@@ -19,7 +19,7 @@ import CandleFeedback from './CandleFeedback.vue'
 
 export default {
   name: 'candle-row',
-  props: ['candle', 'theme'],
+  props: ['candle', 'theme', 'actId'],
   data () {
     return {
       active: true,
@@ -30,7 +30,7 @@ export default {
     }
   },
   methods: {
-    isCorrect (data) {
+    isCorrect(data) {
       this.feedbackData = {
         open: Math.abs(this.candle.candlechart.csdata.open - data.open),
         close: Math.abs(this.candle.candlechart.csdata.close - data.close),
@@ -39,6 +39,10 @@ export default {
       }
       this.checked = false;
       this.correct = this.feedbackData.open === 0 && this.feedbackData.close === 0 && this.feedbackData.high === 0 && this.feedbackData.low === 0 ? true : false;
+      if (this.correct) {
+        console.log(this.actId);
+        console.log(data);
+      }
       this.$emit('candle-correct', this.correct);
     }
   },
@@ -50,40 +54,38 @@ export default {
 }
 </script>
 
-<style lang="scss" crow>
+<style lang="scss" scoped>
+@import '../Variables.scss';
 
-  @import '../Variables.scss';
-
-  .activity-group {
+.activity-group {
     .candle-row {
-      padding-bottom: 30px;
-      margin-bottom: 50px;
-
-      @media(min-width: 576px) {
-        padding-bottom: 5px;
-        margin-bottom: 25px;
-      }
-    }
-  }
-
-  .dark {
-    .activity-group {
-      .candle-row {
-        border-bottom: 1px solid lighten($pane-dark-border, 10%);
+        padding-bottom: 30px;
+        margin-bottom: 50px;
 
         @media(min-width: 576px) {
-          border-bottom: 1px solid $pane-dark-border;
+            padding-bottom: 5px;
+            margin-bottom: 25px;
         }
-      }
     }
-  }
+}
 
-  .light {
+.dark {
     .activity-group {
-      .candle-row {
-        border-bottom: 1px solid $pane-light-border;
-      }
-    }
-  }
+        .candle-row {
+            border-bottom: 1px solid lighten($pane-dark-border, 10%);
 
+            @media(min-width: 576px) {
+                border-bottom: 1px solid $pane-dark-border;
+            }
+        }
+    }
+}
+
+.light {
+    .activity-group {
+        .candle-row {
+            border-bottom: 1px solid $pane-light-border;
+        }
+    }
+}
 </style>

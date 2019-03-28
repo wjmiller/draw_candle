@@ -1,8 +1,22 @@
 const AppData = {
   theme: 'dark',
+  path: 'Core Strategy > Lesson 12',
+  title: "Basic Candlesticks: The Life of a Candle",
+  instructor: 'Merlin Rothfeld',
+  video: {
+    poster: 'life_of_candle.png',
+    sources: [
+      'life_of_candle.mp4'
+    ]
+  },
+  objectives: [
+    'Understand the relationships blah blah',
+    'Identify key blah blah of candle',
+    'Demonstrate ability to blah blah'
+  ],
   activities: [{
       id: "samecandle",
-      title: "Candle Builder Activity #1",
+      title: "Build a Candle Activity 1",
       candles: [{
           pricechart: {},
           candlechart: {
@@ -38,7 +52,7 @@ const AppData = {
     },
     {
       id: "nowick",
-      title: "Candle Builder Activity #2",
+      title: "Build a Candle Activity 2",
       candles: [{
           pricechart: {},
           candlechart: {
@@ -74,7 +88,7 @@ const AppData = {
     },
     {
       id: "differentcolor",
-      title: "Candle Builder Activity #3",
+      title: "Build a Candle Activity 3",
       candles: [{
           pricechart: {},
           candlechart: {
@@ -110,7 +124,7 @@ const AppData = {
     },
     {
       id: "shortbodywick",
-      title: "Candle Builder Activity #4",
+      title: "Build a Candle Activity 4",
       candles: [{
           pricechart: {},
           candlechart: {
@@ -146,7 +160,7 @@ const AppData = {
     },
     {
       id: "shortbodylongwick",
-      title: "Candle Builder Activity #5",
+      title: "Build a Candle Activity 5",
       candles: [{
           pricechart: {},
           candlechart: {
@@ -182,7 +196,7 @@ const AppData = {
     },
     {
       id: "longbodywick",
-      title: "Candle Builder Activity #6",
+      title: "Build a Candle Activity 6",
       candles: [{
           pricechart: {},
           candlechart: {
