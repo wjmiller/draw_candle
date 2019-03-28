@@ -5,10 +5,10 @@
       <span class="prompt">Correctly complete the activity above to unlock this question.</span>
     </b-col>
     <b-col v-if="active" cols="12" md="9">
-      <QuestionOpen v-on:valid-change="activateFeedback($event)" :active="active" :question="question.question"/>
+      <question-open v-on:valid-change="activateFeedback($event)" :active="active" :question="question.question" :comparison="question.feedback.correct"/>
     </b-col>
     <b-col v-if="active" cols="12" md="3">
-      <QuestionFeedback :active="feedbackActive" :feedback="question.feedback"/>
+      <question-feedback :active="feedbackActive" :feedback="question.feedback"/>
     </b-col>
   </b-row>
 </template>
@@ -19,7 +19,7 @@ import QuestionFeedback from './QuestionFeedback'
 
 
 export default {
-  name: 'QuestionRow',
+  name: 'question-row',
   props: ['question', 'active'],
   data () {
     return {
@@ -33,6 +33,7 @@ export default {
   methods: {
     activateFeedback (val) {
       this.feedbackActive = val
+      this.$emit('valid-change', true);
     }
   }
 

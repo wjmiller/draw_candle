@@ -1,21 +1,29 @@
 <template lang="html">
-  <b-row class="question-open">
-    <b-col md="4">{{question}}</b-col>
-    <b-col md="8">
-      <textarea class="response" type="text" @keyup="isValid" v-model="response"></textarea>
-      <span>{{response.length}}</span>
-    </b-col>
-  </b-row>
+  <div class="question-open row">
+    <div class="col-md-4">{{question}}</div>
+    <div class="col-md-8">
+      <textarea class="response" type="text" v-on:keyup="isValid" v-model="response"></textarea>
+      <div>Sufficiently Intelligible
+        <span class="intelligible-marker">
+          <img v-if="valid" class="animate-zoom" src="../assets/images/checkmark_green.svg"/>
+          <img v-else class="animate-zoom" src="../assets/images/cross_red.svg"/>
+        </span>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
+import stringSim from 'string-similarity'
+
 export default {
-  name: "QuestionOpen",
-  props: ["active", "question"],
+  name: "question-open",
+  props: ["active", "question", "comparison"],
   data () {
     return {
       valid: false,
-      minimumChar: 50,
+      minimumDiff: 0.3,
+      difference: 0.0,
       instruction: 'Question goes here',
       response: ''
     }
@@ -23,12 +31,17 @@ export default {
   methods: {
     isValid () {
       const curValid = this.valid;
-      this.valid = this.response.length >= this.minimumChar
+      this.difference = stringSim.compareTwoStrings(this.response, this.comparison);
+      this.valid = this.difference >= this.minimumDiff;
+      //this.valid = this.response.length >= this.minimumChar
       if (curValid !== this.valid) this.validChange()
     },
     validChange () {
       this.$emit('valid-change', this.valid);
     }
+  },
+  computed: {
+    displayDifference () {return `${Math.round(this.difference * 100)}%`}
   }
 }
 </script>
@@ -49,6 +62,11 @@ export default {
   padding: 10px 15px;
   border-radius: 8px;
 }
+
+.intelligible-marker img {
+  height: 16px;
+}
+
 .dark {
 
   .question-open {

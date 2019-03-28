@@ -30,7 +30,7 @@
 <script>
 
 export default {
-  name: 'PriceChart',
+  name: 'price-chart',
   props: ['pcdata'],
   data() {
     return {

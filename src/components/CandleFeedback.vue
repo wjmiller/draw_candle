@@ -1,6 +1,6 @@
 <template lang="html">
   <div class="feedback">
-    <b-button class="feedback-btn" size="sm" :disabled="!active" @click="revealFeedback()">{{buttonTitle}}</b-button>
+    <b-button class="feedback-btn" size="sm" :disabled="!active" v-on:click="revealFeedback()">{{buttonTitle}}</b-button>
     <div>
       <div class="feedback-display" v-bind:class="{'correct': (correct && revealed)}">
           <div class="feedback-message" v-if="revealed">
@@ -34,7 +34,7 @@
 <script>
 
 export default {
-  name: 'CandleFeedback',
+  name: 'candle-feedback',
   props: {active: Boolean, feedbackData: Object, correct: Boolean, checked: Boolean, theme: String},
   data () {
     return {

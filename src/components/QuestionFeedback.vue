@@ -16,13 +16,13 @@
 
 
 export default {
-  name: 'QuestionFeedback',
+  name: 'question-feedback',
   props: {active: Boolean, feedback: Object},
   data () {
     return {
       revealed: false,
       message: 'this is a test',
-      inactiveMessage: 'You must type 50 characters or more of your own response to compare.',
+      inactiveMessage: 'You must write a sufficiently intelligible response in order to compare responses.',
       buttonTitle: 'Compare My Response'
     }
   },

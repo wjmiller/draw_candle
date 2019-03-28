@@ -1,13 +1,13 @@
 <template lang="html">
   <div class="row candle-row">
     <div class="col-sm-12 col-md-12 col-lg-4">
-      <PriceChart :pcdata="candle.candlechart.cdata"></PriceChart>
+      <price-chart :pcdata="candle.candlechart.cdata" />
     </div>
     <div class="col-sm-12 col-md-12 col-lg-5">
-      <CandleBuilder :cbdata="candle.candlechart" v-on:candleChange="isCorrect"></CandleBuilder>
+      <candle-builder :cbdata="candle.candlechart" v-on:candleChange="isCorrect" />
     </div>
     <div class="col-sm-12 col-md-12 col-lg-3">
-      <CandleFeedback :theme="theme" :active="active" :feedbackData="feedbackData" :correct="correct" :checked="checked"/>
+      <candle-feedback :theme="theme" :active="active" :feedbackData="feedbackData" :correct="correct" :checked="checked"/>
     </div>
   </div>
 </template>
@@ -18,7 +18,7 @@ import PriceChart from './PriceChart.vue'
 import CandleFeedback from './CandleFeedback.vue'
 
 export default {
-  name: 'CandleRow',
+  name: 'candle-row',
   props: ['candle', 'theme'],
   data () {
     return {

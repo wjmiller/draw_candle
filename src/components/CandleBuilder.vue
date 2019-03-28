@@ -5,12 +5,12 @@
       <h3>Candle Builder</h3>
     </div>
     <div class="col-sm-8 col-md-8 col-lg-8">
-      <svg id="chart" width="100%" v-bind:height="51 + ((cbdata.cdata.prices.length - 1) * 40)">
+      <svg id="chart" width="100%" v-bind:height="chartHeight">
         <g>
           <rect width="100%" height="100%" class="chart-bg"></rect>
           <text x="0" y="15" class="chart-num">Price</text>
-          <text v-for="(price,index) in cbdata.cdata.prices" :key="'price-' + index" x="0" v-bind:y="50 + (40 * index)" class="chart-num">{{price}}</text>
-          <line v-for="(price,index) in cbdata.cdata.prices" :key="'line-' + index" x1="50" v-bind:y1="50 + (40 * index)" x2="96%" v-bind:y2="50 + (40 * index)" class="chart-pline" />
+          <text v-for="(price,index) in cbdata.cdata.prices" :key="`pricechart-${index}`" x="0" v-bind:y="50 + (40 * index)" class="chart-num">{{price}}</text>
+          <line v-for="(price,index) in cbdata.cdata.prices" :key="`priceline-${index}`" x1="50" v-bind:y1="50 + (40 * index)" x2="96%" v-bind:y2="50 + (40 * index)" class="chart-pline" />
         </g>
         <g>
           <line x1="155" v-bind:y1="chartBodyTop" x2="155" v-bind:y2="chartWickTop" class="candle-wick" />
@@ -23,23 +23,23 @@
       <div class="candle-controls">
         <div class="slidecontainer">
           <label>Top Wick</label>
-          <input type="range" v-model="rangeWickTop" min="0" max="10" step="1" class="slide" @input="changeCandle('WickTop')">
+          <input type="range" v-model="rangeWickTop" min="0" max="10" step="1" class="slide" v-on:input="changeCandle('WickTop')">
         </div>
         <div class="slidecontainer">
           <label>Top of Body</label>
-          <input type="range" v-model="rangeBodyTop" min="0" max="10" step="1" class="slide" @input="changeCandle('BodyTop')">
+          <input type="range" v-model="rangeBodyTop" min="0" max="10" step="1" class="slide" v-on:input="changeCandle('BodyTop')">
         </div>
         <div class="slidecontainer">
           <label>Bottom of Body</label>
-          <input type="range" v-model="rangeBodyBottom" min="0" max="10" step="1" class="slide" @input="changeCandle('BodyBottom')">
+          <input type="range" v-model="rangeBodyBottom" min="0" max="10" step="1" class="slide" v-on:input="changeCandle('BodyBottom')">
         </div>
         <div class="slidecontainer">
           <label>Bottom Wick</label>
-          <input type="range" v-model="rangeWickBottom" min="0" max="10" step="1" class="slide" @input="changeCandle('WickBottom')">
+          <input type="range" v-model="rangeWickBottom" min="0" max="10" step="1" class="slide" v-on:input="changeCandle('WickBottom')">
         </div>
         <p class="candle-color">Color</p>
         <label class="switch">
-          <input type="checkbox" v-model="candleRed" @change="changeCandle('BodyColor')">
+          <input type="checkbox" v-model="candleRed" v-on:change="changeCandle('BodyColor')">
           <span class="slider round"></span>
         </label>
       </div>
@@ -53,11 +53,12 @@
 <script>
 
 export default {
-  name: 'CandleBuilder',
+  name: 'candle-builder',
   data () {
     return {
       chartTop: 250,
       sliderMax: 10,
+      chartBaseHeight: 51,
       chartTick: 20,
       bodyBase: 5,
       bodyTop: 0,
@@ -73,6 +74,7 @@ export default {
   },
   computed: {
     //chartTop () {55 + ((this.cbdata.cdata.prices.length - 1) * 50)},
+    chartHeight () {return this.chartBaseHeight + ((this.cbdata.cdata.prices.length - 1) * this.chartTick * 2)},
     cBodyTop () {return this.bodyTop},
     cBodyBottom () {return Math.max(this.bodyTop - this.bodyBottom, 0)},
     cWickTop () {return Math.max(this.wickTop - this.bodyTop, 0)},
