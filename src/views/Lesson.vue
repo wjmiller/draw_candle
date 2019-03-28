@@ -27,10 +27,10 @@
     </b-row>
     <!-- Lesson Activities -->
     <ActivityGroup
-      v-for="(activity, index) in activities"
+      v-for="(activity, index) in data.activities"
       :key="`act-group-${index}`"
       :activity="activity"
-      :theme="theme"
+      :theme="data.theme"
       v-on:activity-group-complete="completeActivityGroup"
     />
   </b-container>
@@ -41,6 +41,8 @@
 <script>
 import ActivityGroup from '../components/ActivityGroup'
 import AppData from '../AppData.js'
+import xAPI from '../xAPI.js'
+
 xAPI.setEvents(['activity-completed','activity-attempted'])
 
 //create candle data from prices

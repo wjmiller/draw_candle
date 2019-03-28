@@ -11,7 +11,6 @@ import {
 } from 'vuex'
 import Navbar from './components/Navbar.vue'
 import AppData from './AppData.js'
-import xAPI from './xAPI.js'
 
 export default {
   name: 'app',

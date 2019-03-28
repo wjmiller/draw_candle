@@ -11,7 +11,8 @@ const fb = require('./firebase.js')
 Vue.config.productionTip = false
 
 // handle page reloads
-let app
+let app;
+
 fb.auth.onAuthStateChanged(user => {
   if (!app) {
     app = new Vue({

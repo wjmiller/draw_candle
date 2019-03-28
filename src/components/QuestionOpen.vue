@@ -5,8 +5,8 @@
       <textarea class="response" type="text" v-on:keyup="isValid" v-model="response"></textarea>
       <div>Sufficiently Intelligible
         <span class="intelligible-marker">
-          <img v-if="valid" class="animate-zoom" src="../assets/images/checkmark_green.svg"/>
-          <img v-else class="animate-zoom" src="../assets/images/cross_red.svg"/>
+          <img v-if="valid" class="animate-zoom" src="../assets/images/icons/checkmark_green.svg"/>
+          <img v-else class="animate-zoom" src="../assets/images/icons/cross_red.svg"/>
         </span>
       </div>
     </div>
