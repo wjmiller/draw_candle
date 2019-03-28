@@ -26,7 +26,13 @@
       </b-col>
     </b-row>
     <!-- Lesson Activities -->
-    <ActivityGroup v-for="(activity, index) in data.activities" :key="'act-group-' + index" :activity="activity" :theme="data.theme" />
+    <ActivityGroup
+      v-for="(activity, index) in activities"
+      :key="`act-group-${index}`"
+      :activity="activity"
+      :theme="theme"
+      v-on:activity-group-complete="completeActivityGroup"
+    />
   </b-container>
 </div>
 </template>
@@ -35,20 +41,22 @@
 <script>
 import ActivityGroup from '../components/ActivityGroup'
 import AppData from '../AppData.js'
+xAPI.setEvents(['activity-completed','activity-attempted'])
 
-
+//create candle data from prices
 AppData.activities.forEach(activity => activity.candles.forEach(candle => {
   const prices = candle.candlechart.cdata.pricePoints;
-  const close = prices.slice(-1)[0]
-  const open = prices[0];
+  const close = prices.slice(-1)[0] //get last item in array
+  const open = prices[0]; //first item in array
   candle.candlechart.csdata = {
     open: open,
     close: close,
     high: Math.max(...prices),
     low: Math.min(...prices),
-    candleRed: open > close
+    candleRed:  open > close //if open > close then it means the price is falling
   }
 }));
+
 
 export default {
   name: 'lesson',
@@ -72,7 +80,8 @@ export default {
     },
     toggleObjectives() {
       this.objShow = !this.objShow;
-    }
+    },
+    completeActivityGroup () {}
   }
 }
 </script>
