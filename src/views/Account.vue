@@ -8,7 +8,7 @@
 
         <b-form @submit.prevent="updateProfile">
           <b-input v-model.trim="name" type="text" :placeholder="userProfile.name" id="name" />
-          <b-input v-model.trim="email" type="email" :placeholder="userProfile.email" id="email" />
+          <b-input v-model.trim="email" type="email" :placeholder="userProfile.email" id="email" readonly />
           <b-button type="submit">Update Profile</b-button>
         </b-form>
 
@@ -70,9 +70,22 @@ export default {
     color: $green;
 }
 
+.dark {
+    .form-box {
+        h3 {
+            color: $text-color-dark;
+        }
+    }
+}
+
 .form-box {
     h3 {
         margin-bottom: 15px;
+    }
+
+    .form-control[readonly] {
+        border-color: #d1d1d1;
+        background: #d1d1d1;
     }
 }
 

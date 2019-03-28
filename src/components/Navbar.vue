@@ -1,7 +1,7 @@
 <template lang="html">
   <b-navbar>
     <b-container>
-      <b-navbar-nav class="ml-auto">
+      <b-navbar-nav v-if="currentUser" class="ml-auto">
         <b-nav-item-dropdown :text="userProfile.name.split(' ')[0]" right>
           <b-dropdown-item @click="toAccount" href="">Account</b-dropdown-item>
           <b-dropdown-item @click="logout" href="">Logout</b-dropdown-item>
@@ -20,7 +20,8 @@ const fb = require('../firebase.js')
 export default {
   name: "navbar",
   computed: {
-    ...mapState(['userProfile'])
+    ...mapState(['userProfile']),
+    ...mapState(['currentUser'])
   },
   methods: {
     logout() {
