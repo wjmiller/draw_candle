@@ -1,45 +1,27 @@
 <template>
-  <div id="app" v-bind:class="{'light': theme === 'light', 'dark':theme === 'dark'}">
-    <div class="container">
-      <ActivityGroup v-for="(activity, index) in activities" :key="'act-group-' + index" :activity="activity" :theme="theme"/>
-    </div>
-  </div>
+<div id="app" v-bind:class="{'light': theme === 'light', 'dark':theme === 'dark'}">
+  <Navbar v-if="currentUser"></Navbar>
+  <router-view :theme="theme"></router-view>
+</div>
 </template>
 
 <script>
-import ActivityGroup from './components/ActivityGroup'
+import {
+  mapState
+} from 'vuex'
+import Navbar from './components/Navbar.vue'
 import AppData from './AppData.js'
-
-AppData.activities.forEach(activity => activity.candles.forEach(candle => {
-  const prices = candle.candlechart.cdata.pricePoints;
-  const close = prices.slice(-1)[0]
-  const open = prices[0];
-  candle.candlechart.csdata = {
-    open: open,
-    close: close,
-    high: Math.max(...prices),
-    low: Math.min(...prices),
-    candleRed:  open > close
-  }
-}));
 
 export default {
   name: 'app',
+  computed: {
+    ...mapState(['currentUser'])
+  },
   data() {
     return AppData
   },
   components: {
-    ActivityGroup
+    Navbar
   }
 }
 </script>
-
-<style>
-  #app {
-    margin-bottom: 60px;
-    color: #fff;
-  }
-  .margin-top {
-    margin-top: 30px;
-  }
-</style>

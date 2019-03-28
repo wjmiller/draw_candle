@@ -21,7 +21,7 @@ import QuestionFeedback from './QuestionFeedback'
 export default {
   name: 'QuestionRow',
   props: ['question', 'active'],
-  data () {
+  data() {
     return {
       feedbackActive: false
     }
@@ -31,56 +31,53 @@ export default {
     QuestionFeedback
   },
   methods: {
-    activateFeedback (val) {
+    activateFeedback(val) {
       this.feedbackActive = val
     }
   }
-
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
+@import '../Variables.scss';
 
-  @import '../Variables.scss';
-
-  .question-row {
+.question-row {
     min-height: 210px;
 
-
     h4 {
-      font-size: 1.1em;
-      margin-bottom: 14px;
+        font-size: 1.1em;
+        margin-bottom: 14px;
     }
 
-    .prompt{
-      padding: 10px 15px;
-      border-radius: $border-radius;
-      min-height: 160px;
-      display: inline-flex;
-      align-items: center;
-      width: 100%;
+    .prompt {
+        padding: 10px 15px;
+        border-radius: $border-radius;
+        min-height: 160px;
+        display: inline-flex;
+        align-items: center;
+        width: 100%;
     }
-  }
+}
 
-  .dark {
+.dark {
     .question-row {
 
-      .prompt {
-        background: $pane-dark-bg;
-        border: 1px solid $pane-dark-border;
-        color: lighten($blue-dark, 70%);
-      }
+        .prompt {
+            background: $pane-dark-bg;
+            border: 1px solid $pane-dark-border;
+            color: lighten($blue-dark, 70%);
+        }
     }
-  }
+}
 
-  .light {
+.light {
     .question-row {
 
-      .prompt {
-        background: $pane-light-bg;
-        border: 1px solid $pane-light-border;
-        color: lighten($text-color-light, 25%);
-      }
+        .prompt {
+            background: $pane-light-bg;
+            border: 1px solid $pane-light-border;
+            color: lighten($text-color-light, 25%);
+        }
     }
-  }
+}
 </style>

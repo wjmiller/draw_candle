@@ -12,7 +12,7 @@
 export default {
   name: "QuestionOpen",
   props: ["active", "question"],
-  data () {
+  data() {
     return {
       valid: false,
       minimumChar: 50,
@@ -21,12 +21,12 @@ export default {
     }
   },
   methods: {
-    isValid () {
+    isValid() {
       const curValid = this.valid;
       this.valid = this.response.length >= this.minimumChar
       if (curValid !== this.valid) this.validChange()
     },
-    validChange () {
+    validChange() {
       this.$emit('valid-change', this.valid);
     }
   }
@@ -34,49 +34,48 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
 @import '../Variables.scss';
 
 .question-open {
-  > div:first-child {
-    //font-size: 1.05em;
-  }
+    > div:first-child {
+        //font-size: 1.05em;
+    }
 }
 
 .response {
-  width: 100%;
-  height: 150px;
-  padding: 10px 15px;
-  border-radius: 8px;
+    width: 100%;
+    height: 150px;
+    padding: 10px 15px;
+    border-radius: 8px;
 }
 .dark {
 
-  .question-open {
-    color: $text-color-dark;
-  }
-
-  .response {
-    border-color: $pane-dark-border;
-    background: $pane-dark-bg;
-    color: $text-color-dark;
-
-
-    &:focus, &:active {
-      outline: 5px solid rgba(255,255,255,0.2);
+    .question-open {
+        color: $text-color-dark;
     }
-  }
+
+    .response {
+        border-color: $pane-dark-border;
+        background: $pane-dark-bg;
+        color: $text-color-dark;
+
+        &:active,
+        &:focus {
+            outline: 5px solid rgba(255,255,255,0.2);
+        }
+    }
 }
 
 .light {
 
-  .question-open {
-    color: $text-color-light;
-  }
+    .question-open {
+        color: $text-color-light;
+    }
 
-  .response {
-    border-color: $pane-light-border;
-    background: $pane-light-bg;
-    color: #333;
-  }
+    .response {
+        border-color: $pane-light-border;
+        background: $pane-light-bg;
+        color: #333;
+    }
 }
 </style>
