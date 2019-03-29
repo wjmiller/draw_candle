@@ -1,5 +1,5 @@
 <template>
-<div>
+<section class="view">
   <!-- Lesson Content-->
   <b-container>
     <b-row class="intro">
@@ -26,15 +26,9 @@
       </b-col>
     </b-row>
     <!-- Lesson Activities -->
-    <ActivityGroup
-      v-for="(activity, index) in data.activities"
-      :key="`act-group-${index}`"
-      :activity="activity"
-      :theme="data.theme"
-      v-on:activity-group-complete="completeActivityGroup"
-    />
+    <ActivityGroup v-for="(activity, index) in data.activities" :key="`act-group-${index}`" :activity="activity" :theme="data.theme" v-on:activity-group-complete="completeActivityGroup" />
   </b-container>
-</div>
+</section>
 </template>
 
 
@@ -43,7 +37,7 @@ import ActivityGroup from '../components/ActivityGroup'
 import AppData from '../AppData.js'
 import xAPI from '../xAPI.js'
 
-xAPI.setEvents(['activity-completed','activity-attempted'])
+xAPI.setEvents(['activity-completed', 'activity-attempted'])
 
 //create candle data from prices
 AppData.activities.forEach(activity => activity.candles.forEach(candle => {
@@ -55,7 +49,7 @@ AppData.activities.forEach(activity => activity.candles.forEach(candle => {
     close: close,
     high: Math.max(...prices),
     low: Math.min(...prices),
-    candleRed:  open > close //if open > close then it means the price is falling
+    candleRed: open > close //if open > close then it means the price is falling
   }
 }));
 
@@ -83,7 +77,7 @@ export default {
     toggleObjectives() {
       this.objShow = !this.objShow;
     },
-    completeActivityGroup () {}
+    completeActivityGroup() {}
   }
 }
 </script>
@@ -256,18 +250,18 @@ export default {
     .intro {
         .intro-instructor {
             h5 {
-                color: $text-color-light;
+                color: $light-text-color;
             }
             p {
-                color: $text-color-light;
+                color: $light-text-color;
             }
 
             @media(min-width: 768px) {
                 h5 {
-                    color: $header-color-light;
+                    color: $light-header-color;
                 }
                 p {
-                    color: $text-color-light;
+                    color: $light-text-color;
                 }
             }
         }
@@ -287,9 +281,25 @@ export default {
             }
 
             h5 {
-                color: $header-color-light;
+                color: $light-header-color;
             }
         }
+    }
+}
+
+.lesson-path {
+    margin-bottom: 5px;
+}
+
+.dark {
+    .lesson-path {
+        color: $dark-text-color;
+    }
+}
+
+.light {
+    .lesson-path {
+        color: lighten($light-text-color, 30%);
     }
 }
 </style>

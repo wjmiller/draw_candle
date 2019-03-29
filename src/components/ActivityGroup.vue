@@ -22,13 +22,15 @@
 <script>
 import CandleRow from './CandleRow'
 import QuestionRow from './QuestionRow'
-import {Activity} from '../mixins/Activity.js'
+import {
+  Activity
+} from '../mixins/Activity.js'
 
 export default {
   name: 'activity-group',
   mixins: [Activity],
   props: ['activity', 'theme'],
-  data () {
+  data() {
     return {
       candlesCorrect: [],
       openQuestion: false
@@ -38,23 +40,23 @@ export default {
     CandleRow,
     QuestionRow
   },
-  created () {
+  created() {
     this.candlesCorrect = Array.from(this.activity.candles).fill(false);
   },
   methods: {
-    isActivityDone () {
+    isActivityDone() {
       //console.log(this);
       this.checkCandles();
       if (this.openQuestion) {
         this.completed = true;
       }
     },
-    checkCandles () {
+    checkCandles() {
       if (this.candlesCorrect.every(item => item === true) && this.candlesCorrect.length === this.activity.candles.length) {
         this.openQuestion = true;
       }
     },
-    updateCandlesCorrect (val, ix) {
+    updateCandlesCorrect(val, ix) {
       this.candlesCorrect[ix] = val;
       this.checkCandles()
     }
@@ -62,7 +64,7 @@ export default {
 }
 </script>
 
-<style lang="scss" group>
+<style lang="scss">
 @import '../Variables.scss';
 
 .activity-group {
@@ -78,27 +80,27 @@ export default {
 
 .dark {
     .activity-group {
-        background: $group-dark-bg;
-        color: $text-color-dark;
+        background: $dark-group-bg;
+        color: $dark-text-color;
 
         h2 {
-            color: $header-color-dark;
+            color: $dark-header-color;
         }
 
         p {
-            color: $text-color-dark;
+            color: $dark-text-color;
         }
     }
 }
 
 .light {
     .activity-group {
-        background: $group-light-bg;
-        //border: 1px solid $group-light-border;
-        color: $text-color-light;
+        background: $light-group-bg;
+        //border: 1px solid $light-group-border;
+        color: $light-text-color;
 
         p {
-            color: $text-color-light;
+            color: $light-text-color;
         }
     }
 }

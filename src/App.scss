@@ -3,13 +3,14 @@
 @import './Variables.scss';
 
 body {
+  margin: 0;
+  padding: 0;
   font-family: pt-sans-pro, sans-serif;
   font-weight: 400;
   font-style: normal;
   font-size: $font-size-base * 1.09;
   -webkit-font-smoothing: antialiased;
-  margin: 0;
-  padding: 0;
+
   @media(min-width: 768px) {
     font-size: $font-size-base;
   }
@@ -27,7 +28,7 @@ h6 {
 .dark {
   h1,
   h2 {
-    color: $header-color-dark;
+    color: $dark-header-color;
   }
 
   h3,
@@ -45,7 +46,7 @@ h6 {
   h4,
   h5,
   h6 {
-    color: $header-color-light;
+    color: $light-header-color;
   }
 }
 
@@ -79,14 +80,18 @@ h6 {
   min-height: calc(100vh);
 
   &.dark {
-    background: $body-dark-bg;
+    background: $dark-body-bg;
     color: #fff;
   }
 
   &.light {
     background-color: #fff;
-    color: $text-color-light;
+    color: $light-text-color;
   }
+}
+
+section.view {
+  margin-top: 40px;
 }
 
 .navbar {
@@ -95,7 +100,7 @@ h6 {
   &.navbar-light {
     .navbar-nav {
       .nav-link {
-        color: $text-color-dark;
+        color: $dark-text-color;
       }
     }
   }
@@ -106,7 +111,7 @@ h6 {
     &.navbar-light {
       .navbar-nav {
         .nav-link {
-          color: $text-color-dark;
+          color: $dark-text-color;
         }
       }
     }
@@ -118,7 +123,7 @@ h6 {
     &.navbar-light {
       .navbar-nav {
         .nav-link {
-          color: $text-color-light;
+          color: $light-text-color;
         }
       }
     }
@@ -208,21 +213,5 @@ h6 {
     color: white;
     background-color: $purple-med;
     border-color: $purple-med;
-  }
-}
-
-.lesson-path {
-  margin-bottom: 5px;
-}
-
-.dark {
-  .lesson-path {
-    color: $text-color-dark;
-  }
-}
-
-.light {
-  .lesson-path {
-    color: lighten($text-color-light, 30%);
   }
 }

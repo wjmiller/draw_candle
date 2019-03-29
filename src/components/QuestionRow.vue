@@ -63,10 +63,14 @@ export default {
 .dark {
     .question-row {
 
+        h4 {
+            color: $dark-gray-light;
+        }
+
         .prompt {
-            background: $pane-dark-bg;
-            border: 1px solid $pane-dark-border;
-            color: lighten($blue-dark, 70%);
+            background: $dark-pane-bg;
+            border: 1px solid $dark-pane-border;
+            color: lighten($dark-blue, 70%);
         }
     }
 }
@@ -75,9 +79,9 @@ export default {
     .question-row {
 
         .prompt {
-            background: $pane-light-bg;
-            border: 1px solid $pane-light-border;
-            color: lighten($text-color-light, 25%);
+            background: $light-pane-bg;
+            border: 1px solid $light-pane-border;
+            color: lighten($light-text-color, 25%);
         }
     }
 }

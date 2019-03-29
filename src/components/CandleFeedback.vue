@@ -122,11 +122,11 @@ export default {
 
 .dark {
     .feedback-display {
-        background-color: darken($pane-dark-bg, 2%);
+        background-color: darken($dark-pane-bg, 2%);
         border-width: 1px;
         border-style: solid;
-        border-color: darken($pane-dark-border, 2%);
-        color: $text-color-dark;
+        border-color: darken($dark-pane-border, 2%);
+        color: $dark-text-color;
 
         &.correct {
             background-color: rgba(99, 200, 72, 0.13);
@@ -145,9 +145,9 @@ export default {
 
 .light {
     .feedback-display {
-        background: $pane-light-bg;
-        border: 1px solid $pane-light-border;
-        color: $text-color-light;
+        background: $light-pane-bg;
+        border: 1px solid $light-pane-border;
+        color: $light-text-color;
     }
 
     .feedback-message {

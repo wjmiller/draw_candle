@@ -107,28 +107,28 @@ export default {
 .dark {
 
     h3 {
-        color: $text-color-dark;
+        color: $dark-text-color;
     }
 
     .chart-bg {
-        fill: $group-dark-bg;
+        fill: $dark-group-bg;
     }
     .chart-num,
     .chart-time {
-        fill: $chart-dark-text;
+        fill: $dark-chart-text;
     }
     .chart-pline,
     .chart-tline {
-        stroke: $chart-dark-lines;
+        stroke: $dark-chart-lines;
     }
 
     .chart-ppline {
-        stroke: $chart-dark-curve;
+        stroke: $dark-chart-curve;
     }
 
     .price-point {
-        fill: $blue-dark;
-        stroke: $chart-dark-points;
+        fill: $dark-blue;
+        stroke: $dark-chart-points;
         stroke-width: 4;
     }
 }
@@ -136,28 +136,28 @@ export default {
 .light {
 
     h3 {
-        color: $text-color-light;
+        color: $light-text-color;
     }
 
     .chart-bg {
-        fill: $group-light-bg;
+        fill: $light-group-bg;
     }
     .chart-num,
     .chart-time {
-        fill: $chart-light-text;
+        fill: $light-chart-text;
     }
     .chart-pline,
     .chart-tline {
-        stroke: $chart-light-lines;
+        stroke: $light-chart-lines;
     }
 
     .chart-ppline {
-        stroke: $chart-light-curve;
+        stroke: $light-chart-curve;
     }
 
     .price-point {
         fill: #fff;
-        stroke: $chart-light-points;
+        stroke: $light-chart-points;
         stroke-width: 4;
     }
 }
