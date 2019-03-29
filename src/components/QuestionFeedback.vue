@@ -15,8 +15,11 @@
 <script>
 export default {
   name: 'question-feedback',
-  props: {active: Boolean, feedback: Object},
-  data () {
+  props: {
+    active: Boolean,
+    feedback: Object
+  },
+  data() {
     return {
       revealed: false,
       message: 'this is a test',
@@ -25,12 +28,12 @@ export default {
     }
   },
   computed: {
-    activeFeedback () {
+    activeFeedback() {
       return !this.active;
     }
   },
   methods: {
-    revealFeedback () {
+    revealFeedback() {
       if (this.active) {
         this.revealed = true;
       }
@@ -40,7 +43,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+//------------------------------------------------------
+// Import Variables
+//------------------------------------------------------
+
 @import '../Variables.scss';
+
+//------------------------------------------------------
+// Import Variables
+//------------------------------------------------------
 
 .feedback {
     margin-top: 25px;
@@ -70,19 +81,26 @@ export default {
     }
 }
 
+// Dark/Light Theme Styles -----------------------------
+
 .dark {
-    .feedback-display {
-        background-color: $dark-pane-bg;
-        border: 1px solid $dark-pane-border;
-        color: $dark-text-color;
+    .feedback {
+        .feedback-display {
+            background-color: $dark-pane-bg;
+            border: 1px solid $dark-pane-border;
+            color: $dark-text-color;
+        }
     }
 }
 
 .light {
-    .feedback-display {
-        background: $light-pane-bg;
-        border: 1px solid $light-pane-border;
-        color: $light-text-color;
+
+    .feedback {
+        .feedback-display {
+            background: $light-pane-bg;
+            border: 1px solid $light-pane-border;
+            color: $light-text-color;
+        }
     }
 }
 </style>

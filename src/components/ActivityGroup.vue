@@ -65,7 +65,15 @@ export default {
 </script>
 
 <style lang="scss">
+// -----------------------------------------------------
+// Import Variables
+// -----------------------------------------------------
+
 @import '../Variables.scss';
+
+// -----------------------------------------------------
+// Activity Group
+// -----------------------------------------------------
 
 .activity-group {
     border-radius: $border-radius;
@@ -77,6 +85,8 @@ export default {
         font-style: italic;
     }
 }
+
+// Dark/Light Theme Styles -----------------------------
 
 .dark {
     .activity-group {

@@ -40,7 +40,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+//------------------------------------------------------
+// Import Variables
+//------------------------------------------------------
+
 @import '../Variables.scss';
+
+//------------------------------------------------------
+// Question Row
+//------------------------------------------------------
 
 .question-row {
     min-height: 210px;
@@ -59,6 +67,8 @@ export default {
         width: 100%;
     }
 }
+
+// Dark/Light Theme Styles -----------------------------
 
 .dark {
     .question-row {

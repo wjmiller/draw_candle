@@ -1,7 +1,7 @@
 import firebase from 'firebase'
 import 'firebase/firestore'
 
-// firebase init goes here
+// Firebase config/init
 const config = {
   apiKey: "AIzaSyAg1KIoq7eREpDYEkyVnmfORunsg9bkayc",
   authDomain: "draw-candle.firebaseapp.com",
@@ -12,12 +12,12 @@ const config = {
 }
 firebase.initializeApp(config)
 
-// firebase utils
+// Firebase utils
 const db = firebase.firestore()
 const auth = firebase.auth()
 const currentUser = auth.currentUser
 
-// firebase collections
+// Firebase collections
 const usersCollection = db.collection('users')
 const userStateCollection = db.collection('userState')
 

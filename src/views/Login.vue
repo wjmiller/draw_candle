@@ -93,10 +93,12 @@ export default {
   },
   methods: {
     toggleForm() {
+      // Toggle Login/Sign Up forms
       this.errorMsg = ''
       this.showLoginForm = !this.showLoginForm
     },
     togglePasswordReset() {
+      // Toggle Login/Password reset forms
       if (this.showForgotPassword) {
         this.showLoginForm = true
         this.showForgotPassword = false
@@ -107,52 +109,65 @@ export default {
       }
     },
     login() {
+      // Start loader
       this.performingRequest = true
 
+      // Sign into Firebase
       fb.auth.signInWithEmailAndPassword(this.loginForm.email, this.loginForm.password).then(user => {
-        // update currentUser state
+        // Update currentUser state
         this.$store.commit('setCurrentUser', user.user)
-        // update userProfile
+        // Update userProfile state
         this.$store.dispatch('fetchUserProfile')
         this.performingRequest = false
         this.$router.push('/')
       }).catch(err => {
+        // Stop loader and set error message
         this.performingRequest = false
         this.errorMsg = err.message
       })
     },
     signup() {
+      // Start loader
       this.performingRequest = true
 
+      // Create new Firebase user
       fb.auth.createUserWithEmailAndPassword(this.signupForm.email, this.signupForm.password).then(user => {
-        // update currentUser state
+        // Update currentUser state
         this.$store.commit('setCurrentUser', user.user)
 
-        // create new user ref in firebase
+        // Create new user ref in Firebase
         fb.usersCollection.doc(user.user.uid).set({
           name: this.signupForm.name,
           email: this.signupForm.email
         }).then(() => {
+          // Update userProfile state
           this.$store.dispatch('fetchUserProfile')
+          // Stop loader and route to root
           this.performingRequest = false
           this.$router.push('/')
         }).catch(err => {
+          // Stop loader and set error message
           this.performingRequest = false
           this.errorMsg = err.message
         })
       }).catch(err => {
+        // Stop loader and set error message
         this.performingRequest = false
         this.errorMsg = err.message
       })
     },
     resetPassword() {
+      // Start loader
       this.performingRequest = true
 
+      // Send password reset email
       fb.auth.sendPasswordResetEmail(this.passwordForm.email).then(() => {
+        // Stop loader, set success, clear email
         this.performingRequest = false
         this.passwordResetSuccess = true
         this.passwordForm.email = ''
       }).catch(err => {
+        // Stop loader and set error message
         this.performingRequest = false
         this.errorMsg = err.message
       })
@@ -163,7 +178,15 @@ export default {
 
 
 <style lang="scss">
+//------------------------------------------------------
+// Import Variables
+//------------------------------------------------------
+
 @import '../Variables.scss';
+
+//------------------------------------------------------
+// Centered Form Box
+//------------------------------------------------------
 
 .form-box {
     width: 100%;
@@ -245,6 +268,8 @@ export default {
         }
     }
 }
+
+// Dark/Light Theme Styles -----------------------------
 
 .dark {
     .form-box {

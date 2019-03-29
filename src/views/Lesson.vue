@@ -39,17 +39,17 @@ import xAPI from '../xAPI.js'
 
 xAPI.setEvents(['activity-completed', 'activity-attempted'])
 
-//create candle data from prices
+// Create candle data from prices
 AppData.activities.forEach(activity => activity.candles.forEach(candle => {
   const prices = candle.candlechart.cdata.pricePoints;
-  const close = prices.slice(-1)[0] //get last item in array
-  const open = prices[0]; //first item in array
+  const close = prices.slice(-1)[0] // Get last item in array
+  const open = prices[0]; // First item in array
   candle.candlechart.csdata = {
     open: open,
     close: close,
     high: Math.max(...prices),
     low: Math.min(...prices),
-    candleRed: open > close //if open > close then it means the price is falling
+    candleRed: open > close // If open > close then it means the price is falling
   }
 }));
 
@@ -84,11 +84,15 @@ export default {
 
 
 <style lang="scss" scoped>
+// -----------------------------------------------------
+// Import Variables
+// -----------------------------------------------------
+
 @import '../Variables.scss';
 
-// --------------------------------------------------
-// Lesson Introduction ------------------------------
-// --------------------------------------------------
+// -----------------------------------------------------
+// Lesson Introduction
+// -----------------------------------------------------
 
 .intro {
     margin-bottom: 60px;
@@ -162,8 +166,7 @@ export default {
 
 }
 
-// Lesson Introduction: Desktop ---------------------
-// --------------------------------------------------
+// Desktop Styles --------------------------------------
 
 @media(min-width: 768px) {
     .intro {
@@ -199,8 +202,7 @@ export default {
     }
 }
 
-// Lesson Introduction: Dark Theme ------------------
-// --------------------------------------------------
+// Dark/Light Theme Styles -----------------------------
 
 .dark {
     .intro {
@@ -243,9 +245,6 @@ export default {
     }
 }
 
-// Lesson Introduction: Light Theme -----------------
-// --------------------------------------------------
-
 .light {
     .intro {
         .intro-instructor {
@@ -284,22 +283,6 @@ export default {
                 color: $light-header-color;
             }
         }
-    }
-}
-
-.lesson-path {
-    margin-bottom: 5px;
-}
-
-.dark {
-    .lesson-path {
-        color: $dark-text-color;
-    }
-}
-
-.light {
-    .lesson-path {
-        color: lighten($light-text-color, 30%);
     }
 }
 </style>

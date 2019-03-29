@@ -4,7 +4,7 @@ const fb = require('./firebase.js')
 
 Vue.use(Vuex)
 
-// handle page reload
+// Handle page reload
 fb.auth.onAuthStateChanged(user => {
   if (user) {
     store.commit('setCurrentUser', user)
