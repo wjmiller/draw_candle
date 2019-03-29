@@ -2,7 +2,7 @@
   <b-navbar>
     <b-container>
       <b-navbar-nav v-if="currentUser" class="ml-auto">
-        <b-nav-item-dropdown :text="userProfile.name.split(' ')[0]" right>
+        <b-nav-item-dropdown :text="firstNameOnly" right>
           <b-dropdown-item @click="toAccount" href="">Account</b-dropdown-item>
           <b-dropdown-item @click="logout" href="">Logout</b-dropdown-item>
         </b-nav-item-dropdown>
@@ -21,7 +21,8 @@ export default {
   name: "navbar",
   computed: {
     ...mapState(['userProfile']),
-    ...mapState(['currentUser'])
+    ...mapState(['currentUser']),
+    firstNameOnly () {return this.userProfile.name ? this.userProfile.name.split(' ')[0] : ''}
   },
   methods: {
     logout() {
