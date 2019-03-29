@@ -1,14 +1,23 @@
+//------------------------------------------------------
+// Import Bootstrap and Custom Variables
+//------------------------------------------------------
+
 @import 'node_modules/bootstrap/scss/bootstrap';
 @import 'node_modules/bootstrap-vue/src/index.scss';
 @import './Variables.scss';
 
+
+//------------------------------------------------------
+// Body
+//------------------------------------------------------
+
 body {
   margin: 0;
   padding: 0;
-  font-family: pt-sans-pro, sans-serif;
   font-weight: 400;
   font-style: normal;
   font-size: $font-size-base * 1.09;
+  font-family: pt-sans-pro, sans-serif;
   -webkit-font-smoothing: antialiased;
 
   @media(min-width: 768px) {
@@ -16,38 +25,13 @@ body {
   }
 }
 
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+
+//------------------------------------------------------
+// Headings
+//------------------------------------------------------
+
+h1,h2,h3,h4,h5,h6 {
   font-weight: 600;
-}
-
-.dark {
-  h1,
-  h2 {
-    color: $dark-header-color;
-  }
-
-  h3,
-  h4,
-  h5,
-  h6 {
-    color: $purple;
-  }
-}
-
-.light {
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    color: $light-header-color;
-  }
 }
 
 h1 {
@@ -74,10 +58,35 @@ h6 {
   font-size: 1em;
 }
 
+// Dark/Light Theme Styles -----------------------------
+
+.dark {
+  h1,h2 {
+    color: $dark-header-color;
+  }
+
+  h3,h4,h5,h6 {
+    color: $purple;
+  }
+}
+
+.light {
+  h1,h2,h3,h4,h5,h6 {
+    color: $light-header-color;
+  }
+}
+
+
+//------------------------------------------------------
+// App Container
+//------------------------------------------------------
+
 #app {
-  padding: 0 0 60px;
   width: 100%;
+  padding: 0 0 60px;
   min-height: calc(100vh);
+
+// Dark/Light Theme Styles -----------------------------
 
   &.dark {
     background: $dark-body-bg;
@@ -90,9 +99,19 @@ h6 {
   }
 }
 
+
+//------------------------------------------------------
+// Route Section Container
+//------------------------------------------------------
+
 section.view {
   margin-top: 40px;
 }
+
+
+//------------------------------------------------------
+// Navbar
+//------------------------------------------------------
 
 .navbar {
   margin-bottom: 10px;
@@ -105,6 +124,8 @@ section.view {
     }
   }
 }
+
+// Dark/Light Theme Styles -----------------------------
 
 .dark {
   .navbar {
@@ -129,6 +150,11 @@ section.view {
     }
   }
 }
+
+
+//------------------------------------------------------
+// Buttons
+//------------------------------------------------------
 
 .btn.disabled {
   &:active,
@@ -161,6 +187,8 @@ section.view {
     box-shadow: none;
   }
 }
+
+// Dark/Light Theme Styles -----------------------------
 
 .dark {
   .btn:active,
@@ -213,5 +241,42 @@ section.view {
     color: white;
     background-color: $purple-med;
     border-color: $purple-med;
+  }
+}
+
+//------------------------------------------------------
+// Button Variations
+//------------------------------------------------------
+
+.close {
+    font-size: 4.2em;
+    font-weight: 400;
+    text-shadow: none;
+    line-height: 36px;
+}
+
+// Dark/Light Theme Styles -----------------------------
+
+.dark {
+  .close {
+    color: #fff;
+
+    &:active,
+    &:hover,
+    &focus {
+        color: #fff;
+    }
+  }
+}
+
+.light {
+  .close {
+    color: $light-text-color;
+
+    &:active,
+    &:hover,
+    &focus {
+        color: $light-text-color;
+    }
   }
 }

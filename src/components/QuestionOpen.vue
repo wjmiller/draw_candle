@@ -19,7 +19,7 @@ import stringSim from 'string-similarity'
 export default {
   name: "question-open",
   props: ["active", "question", "comparison"],
-  data () {
+  data() {
     return {
       valid: false,
       minimumDiff: 0.3,
@@ -41,45 +41,57 @@ export default {
     }
   },
   computed: {
-    displayDifference () {return `${Math.round(this.difference * 100)}%`}
+    displayDifference() {
+      return `${Math.round(this.difference * 100)}%`
+    }
   }
 }
 </script>
 
 <style lang="scss" scoped>
+//------------------------------------------------------
+// Import Variables
+//------------------------------------------------------
+
 @import '../Variables.scss';
+
+//------------------------------------------------------
+// Question Open
+//------------------------------------------------------
 
 .question-open {
     > div:first-child {
         //font-size: 1.05em;
     }
+
+    .response {
+        width: 100%;
+        height: 150px;
+        padding: 10px 15px;
+        border-radius: 8px;
+    }
+
+    .intelligible-marker img {
+        height: 16px;
+    }
 }
 
-.response {
-    width: 100%;
-    height: 150px;
-    padding: 10px 15px;
-    border-radius: 8px;
-}
-
-.intelligible-marker img {
-  height: 16px;
-}
+// Dark/Light Theme Styles -----------------------------
 
 .dark {
 
     .question-open {
         color: $dark-text-color;
-    }
 
-    .response {
-        border-color: $dark-pane-border;
-        background: $dark-pane-bg;
-        color: $dark-text-color;
+        .response {
+            border-color: $dark-pane-border;
+            background: $dark-pane-bg;
+            color: $dark-text-color;
 
-        &:active,
-        &:focus {
-            outline: 5px solid rgba(255,255,255,0.2);
+            &:active,
+            &:focus {
+                outline: 5px solid rgba(255,255,255,0.2);
+            }
         }
     }
 }
@@ -88,12 +100,12 @@ export default {
 
     .question-open {
         color: $light-text-color;
-    }
 
-    .response {
-        border-color: $light-pane-border;
-        background: $light-pane-bg;
-        color: #333;
+        .response {
+            border-color: $light-pane-border;
+            background: $light-pane-bg;
+            color: #333;
+        }
     }
 }
 </style>

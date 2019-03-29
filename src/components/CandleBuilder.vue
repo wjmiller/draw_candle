@@ -5,38 +5,53 @@
     <h3>Candle Builder</h3>
   </div>
   <div class="col-sm-8 col-md-8 col-lg-8">
+    <!-- Candle Builder Chart -->
     <svg id="chart" width="100%" v-bind:height="chartHeight">
       <g>
+        <!-- Chart Background -->
         <rect width="100%" height="100%" class="chart-bg"></rect>
+        <!-- Price Axis Label -->
         <text x="0" y="15" class="chart-num">Price</text>
+        <!-- Price Labels -->
         <text v-for="(price,index) in cbdata.cdata.prices" :key="'price-' + index" x="0" v-bind:y="50 + (40 * index)" class="chart-num">{{price}}</text>
+        <!-- Price Lines -->
         <line v-for="(price,index) in cbdata.cdata.prices" :key="'line-' + index" x1="50" v-bind:y1="50 + (40 * index)" x2="96%" v-bind:y2="50 + (40 * index)" class="chart-pline" />
       </g>
+      <!-- Candlestick -->
       <g>
+        <!-- Candle Top Wick -->
         <line x1="155" v-bind:y1="chartBodyTop" x2="155" v-bind:y2="chartWickTop" class="candle-wick" />
+        <!-- Candle Body -->
         <rect :x="125" v-bind:y="chartBodyTop" width="60" v-bind:height="chartBodyHeight" v-bind:class="chartBodyColor" />
+        <!-- Candle Bottom Wick -->
         <line x1="155" v-bind:y1="chartBodyHeight + chartBodyTop" x2="155" v-bind:y2="chartWickBottom" class="candle-wick" />
       </g>
     </svg>
   </div>
   <div class="col-sm-4 col-md-4 col-lg-4">
+    <!-- Candle Builder Controls -->
     <div class="candle-controls">
+      <!-- Top Wick Slider -->
       <div class="slidecontainer">
         <label>Top Wick</label>
         <input type="range" v-model="rangeWickTop" min="0" max="10" step="1" class="slide" @input="changeCandle('WickTop')">
       </div>
+      <!-- Top Body Slider -->
       <div class="slidecontainer">
         <label>Top of Body</label>
         <input type="range" v-model="rangeBodyTop" min="0" max="10" step="1" class="slide" @input="changeCandle('BodyTop')">
       </div>
+      <!-- Bottom Body Slider -->
       <div class="slidecontainer">
         <label>Bottom of Body</label>
         <input type="range" v-model="rangeBodyBottom" min="0" max="10" step="1" class="slide" @input="changeCandle('BodyBottom')">
       </div>
+      <!-- Bottom Wick Slider -->
       <div class="slidecontainer">
         <label>Bottom Wick</label>
         <input type="range" v-model="rangeWickBottom" min="0" max="10" step="1" class="slide" @input="changeCandle('WickBottom')">
       </div>
+      <!-- Color Slider -->
       <p class="candle-color">Color</p>
       <label class="switch">
         <input type="checkbox" v-model="candleRed" @change="changeCandle('BodyColor')">
@@ -48,12 +63,10 @@
 </template>
 
 
-
-<!-- Javascript -->
 <script>
 export default {
   name: 'candle-builder',
-  data () {
+  data() {
     return {
       chartTop: 250,
       sliderMax: 10,
@@ -73,7 +86,7 @@ export default {
   },
   computed: {
     //chartTop () {55 + ((this.cbdata.cdata.prices.length - 1) * 50)},
-    chartHeight () {
+    chartHeight() {
       return this.chartBaseHeight + ((this.cbdata.cdata.prices.length - 1) * this.chartTick * 2)
     },
     cBodyTop() {
@@ -152,7 +165,15 @@ export default {
 
 
 <style lang="scss" scoped>
+// -----------------------------------------------------
+// Import Variables
+// -----------------------------------------------------
+
 @import '../Variables.scss';
+
+// -----------------------------------------------------
+// Candle Builder
+// -----------------------------------------------------
 
 .candle-builder {
     margin-bottom: 15px;
@@ -361,6 +382,8 @@ export default {
     }
 
 }
+
+// Dark/Light Theme Styles -----------------------------
 
 .dark {
     .candle-builder {

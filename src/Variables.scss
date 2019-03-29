@@ -2,7 +2,7 @@
 // Global Variables
 //-----------------------------------------------
 
-// colors
+// Colors
 $purple:                                  #8991fa;
 $purple-med:                              #676EC9;
 $green:                                   #5AC848;
@@ -11,10 +11,10 @@ $gray:                                    #66676B;
 $orange:                                  #FC5423;
 $magenta:                                 #E874F8;
 
-// font size base
+// Font Size Base
 $font-size-base:                             17px;
 
-// border-radius
+// Border Radius
 $border-radius:                                 0;
 $border-radius-btn:                          30px;
 
@@ -23,32 +23,32 @@ $border-radius-btn:                          30px;
 // Dark Theme Variables
 //-----------------------------------------------
 
-// colors
+// Colors
 $dark-blue:                               #191C2C;
 $dark-gray-light:                         #C1C2C6;
 $dark-gray:                               #494C5B;
 $dark-gray-dark:                          #353845;
 $dark-white-med:                          #F5F6F8;
 
-// background
+// Background
 $dark-body-bg:                         $dark-blue;
 
-// headers and text
+// Headers and Text
 $dark-header-color:                       #FFFFFF;
 $dark-text-color:        lighten($dark-blue, 75%);
 
-// activity
+// Activity
 $dark-group-bg:                        $dark-blue;
 $dark-pane-bg:            lighten($dark-blue, 5%);
 $dark-pane-border:       lighten($dark-blue, 10%);
 
-// price chart
+// Price Chart
 $dark-chart-text:                         #FFFFFF;
 $dark-chart-lines:                        #888888;
 $dark-chart-curve:                        #555555;
 $dark-chart-points:                  $purple;
 
-// candle builder controls
+// Candle Builder Controls
 $dark-slide-bg:                        $dark-blue;
 $dark-slide-handle:      lighten($dark-blue, 60%);
 
@@ -58,29 +58,29 @@ $dark-slide-handle:      lighten($dark-blue, 60%);
 // Light Theme Variables
 //-----------------------------------------------
 
-// colors
+// Colors
 $light-blue-dark:                         #152879;
 $light-gray-dark:                         #444444;
 $light-gray-med:                          #40455A;
 $light-gray-light:                        #EAEAEA;
 
-// headers and text
+// Headers and Text
 $light-header-color:             $light-blue-dark;
 $light-text-color:               $light-gray-dark;
 
-// activity
+// Activity
 $light-group-bg:                          #FFFFFF;
 $light-group-border:                      #BBBBBB;
 $light-pane-bg:                           #FCFCFC;
 $light-pane-border:                       #BBBBBB;
 
-// price chart
+// Price Chart
 $light-chart-text:                        #333333;
 $light-chart-lines:                       #999999;
 $light-chart-curve:                       #BBBBBB;
 $light-chart-points:              $light-gray-med;
 
-// candle builder controls
+// Candle Builder Controls
 $light-slide-bg:                          #CCCCCC;
 $light-slide-handle:                      #777777;
 

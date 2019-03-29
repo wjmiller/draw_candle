@@ -7,6 +7,7 @@ const xAPI = {
     events.forEach(ev => EventBus.$on(ev, this.processEvent))
   },
   processEvent: function(vueObject) {
+    // eslint-disable-next-line
     console.log(vueObject);
     const stmt = new ADL.XAPIStatement(
       new ADL.XAPIStatement.Agent('mailto:emailaddress@example.com', 'Email Address'),
@@ -15,6 +16,7 @@ const xAPI = {
     );
     stmt.generateId();
     ADL.XAPIWrapper.sendStatement(stmt, (resp, obj) => {
+      // eslint-disable-next-line
       console.log(resp, obj);
     });
   }

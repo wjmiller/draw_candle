@@ -41,7 +41,7 @@ export default {
     checked: Boolean,
     theme: String
   },
-  data () {
+  data() {
     return {
       revealed: false,
       buttonTitle: 'Check My Candlestick'
@@ -58,9 +58,64 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+// -----------------------------------------------------
+// Import Variables
+// -----------------------------------------------------
+
 @import '../Variables.scss';
 
+// -----------------------------------------------------
+// Candle Feedback Styles
+// -----------------------------------------------------
+
 .feedback {
+
+    .feedback-display {
+        margin: 18px 0;
+        padding: 10px;
+        border-radius: $border-radius;
+        height: 165px;
+        transition: background-color border-color opacity 0.5s;
+
+        @media(min-width: 769px) {
+            height: 212px;
+        }
+
+        .feedback-message {
+            font-size: 0.95em;
+
+            .feedback-correct {
+                font-size: 1.2em;
+                font-weight: 600;
+                margin-bottom: 5px;
+
+                img {
+                    display: block;
+                    width: 78px;
+                    height: 78px;
+                    margin: 24px auto 0;
+
+                    @media(min-width: 769px) {
+                        margin: 48px auto 0;
+                    }
+
+                    &.animate-zoom {
+                        -webkit-animation: zoom-in-out 0.5s ease-in 0s 1 normal;
+                        -moz-animation: zoom-in-out 0.5s ease-in 0s 1 normal;
+                        -ms-animation: zoom-in-out 0.5s ease-in 0s 1 normal;
+                        animation: zoom-in-out 0.5s ease-in 0s 1 normal;
+                    }
+                }
+            }
+
+            .feedback-incorrect {
+                font-size: 1.2em;
+                font-weight: 600;
+                color: $red;
+                margin-bottom: 5px;
+            }
+        }
+    }
 
     button {
         margin-top: 25px;
@@ -73,52 +128,7 @@ export default {
     }
 }
 
-.feedback-display {
-    margin: 18px 0;
-    padding: 10px;
-    border-radius: $border-radius;
-    height: 165px;
-    transition: background-color border-color opacity 0.5s;
-
-    @media(min-width: 769px) {
-        height: 212px;
-    }
-}
-
-.feedback-message {
-    font-size: 0.95em;
-
-    .feedback-correct {
-        font-size: 1.2em;
-        font-weight: 600;
-        margin-bottom: 5px;
-
-        img {
-            display: block;
-            width: 78px;
-            height: 78px;
-            margin: 24px auto 0;
-
-            @media(min-width: 769px) {
-                margin: 48px auto 0;
-            }
-
-            &.animate-zoom {
-                -webkit-animation: zoom-in-out 0.5s ease-in 0s 1 normal;
-                -moz-animation: zoom-in-out 0.5s ease-in 0s 1 normal;
-                -ms-animation: zoom-in-out 0.5s ease-in 0s 1 normal;
-                animation: zoom-in-out 0.5s ease-in 0s 1 normal;
-            }
-        }
-    }
-
-    .feedback-incorrect {
-        font-size: 1.2em;
-        font-weight: 600;
-        color: $red;
-        margin-bottom: 5px;
-    }
-}
+// Dark/Light Theme Styles -----------------------------
 
 .dark {
     .feedback-display {

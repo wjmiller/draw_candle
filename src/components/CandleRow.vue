@@ -20,7 +20,7 @@ import CandleFeedback from './CandleFeedback.vue'
 export default {
   name: 'candle-row',
   props: ['candle', 'theme', 'actId'],
-  data () {
+  data() {
     return {
       active: true,
       correct: false,
@@ -40,8 +40,10 @@ export default {
       this.checked = false;
       this.correct = this.feedbackData.open === 0 && this.feedbackData.close === 0 && this.feedbackData.high === 0 && this.feedbackData.low === 0 ? true : false;
       if (this.correct) {
+        /* eslint-disable */
         console.log(this.actId);
         console.log(data);
+        /* eslint-enable */
       }
       this.$emit('candle-correct', this.correct);
     }
@@ -55,7 +57,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+//------------------------------------------------------
+// Import Variables
+//------------------------------------------------------
+
 @import '../Variables.scss';
+
+//------------------------------------------------------
+// Candle Row
+//------------------------------------------------------
 
 .activity-group {
     .candle-row {
@@ -68,6 +78,8 @@ export default {
         }
     }
 }
+
+// Dark/Light Theme Styles -----------------------------
 
 .dark {
     .activity-group {

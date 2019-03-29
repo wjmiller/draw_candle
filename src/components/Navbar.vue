@@ -25,12 +25,16 @@ export default {
   },
   methods: {
     logout() {
+      // Sign out of Firebase auth
       fb.auth.signOut().then(() => {
+        // Clear currentUser/userProfile state data
         this.$store.dispatch('clearData')
+        // Route to login view
         this.$router.push('/login')
       }).catch(err => {})
     },
     toAccount() {
+      // Route to Account
       this.$router.replace('/account')
     }
   }

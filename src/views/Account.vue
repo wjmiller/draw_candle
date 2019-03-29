@@ -7,12 +7,14 @@
         <div class="form-box">
           <h3>My Account</h3>
 
+          <!-- My Account Form -->
           <b-form @submit.prevent="updateProfile">
             <b-input v-model.trim="name" type="text" :placeholder="userProfile.name" id="name" />
             <b-input v-model.trim="email" type="email" :placeholder="userProfile.email" id="email" readonly />
             <b-button type="submit">Update Profile</b-button>
           </b-form>
 
+          <!-- Success Message -->
           <transition name="fade">
             <p v-if="showSuccess" class="success">Profile Updated</p>
           </transition>
@@ -42,16 +44,20 @@ export default {
   },
   methods: {
     updateProfile() {
+      // Update userProfile state
       this.$store.dispatch('updateProfile', {
         name: this.name !== '' ? this.name : this.userProfile.name,
         email: this.email !== '' ? this.email : this.userProfile.email
       })
 
+      // Clear name and email fields
       this.name = ''
-      this.title = ''
+      this.email = ''
 
+      // Show success message
       this.showSuccess = true
 
+      // Remove success message after 2 seconds
       setTimeout(() => {
         this.showSuccess = false
       }, 2000)
@@ -64,21 +70,26 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+// -----------------------------------------------------
+// Import Variables
+// -----------------------------------------------------
+
 @import '../Variables.scss';
 
+// -----------------------------------------------------
+// Success Message Styles
+// -----------------------------------------------------
+
 .success {
+    text-align: center;
     margin-top: 15px;
     font-weight: 600;
     color: $green;
 }
 
-.dark {
-    .form-box {
-        h3 {
-            color: $dark-text-color;
-        }
-    }
-}
+// -----------------------------------------------------
+// Form Box Scoped Styles
+// -----------------------------------------------------
 
 .form-box {
     h3 {
@@ -91,17 +102,13 @@ export default {
     }
 }
 
-.close {
-    text-shadow: none;
-    color: #fff;
-    font-size: 4.2em;
-    font-weight: 400;
-    line-height: 36px;
+// Dark/Light Theme Styles -----------------------------
 
-    &:active,
-    &:hover,
-    &focus {
-        color: #fff;
+.dark {
+    .form-box {
+        h3 {
+            color: $dark-text-color;
+        }
     }
 }
 </style>
