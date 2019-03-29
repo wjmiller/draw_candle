@@ -72,10 +72,10 @@ export default {
 .dark {
     .activity-group {
         .candle-row {
-            border-bottom: 1px solid lighten($pane-dark-border, 10%);
+            border-bottom: 1px solid lighten($dark-pane-border, 10%);
 
             @media(min-width: 576px) {
-                border-bottom: 1px solid $pane-dark-border;
+                border-bottom: 1px solid $dark-pane-border;
             }
         }
     }
@@ -84,7 +84,7 @@ export default {
 .light {
     .activity-group {
         .candle-row {
-            border-bottom: 1px solid $pane-light-border;
+            border-bottom: 1px solid $light-pane-border;
         }
     }
 }

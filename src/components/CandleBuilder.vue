@@ -366,11 +366,11 @@ export default {
     .candle-builder {
 
         h3 {
-            color: $text-color-dark;
+            color: $dark-text-color;
         }
 
         .chart-bg {
-            fill: $group-dark-bg;
+            fill: $dark-group-bg;
         }
         .chart-num {
             fill: #ddd;
@@ -384,8 +384,8 @@ export default {
         }
 
         .candle-controls {
-            background: $pane-dark-bg;
-            border: 1px solid $pane-dark-border;
+            background: $dark-pane-bg;
+            border: 1px solid $dark-pane-border;
 
             .slidecontainer {
                 label {
@@ -393,15 +393,15 @@ export default {
                 }
 
                 .slide {
-                    background: $slide-dark-bg;
+                    background: $dark-slide-bg;
                 }
 
                 .slide::-webkit-slider-thumb {
-                    background: $slide-dark-handle;
+                    background: $dark-slide-handle;
                 }
 
                 .slide::-moz-range-thumb {
-                    background: $slide-dark-handle;
+                    background: $dark-slide-handle;
                 }
 
             }
@@ -418,11 +418,11 @@ export default {
     .candle-builder {
 
         h3 {
-            color: $text-color-light;
+            color: $light-text-color;
         }
 
         .chart-bg {
-            fill: $group-light-bg;
+            fill: $light-group-bg;
         }
         .chart-num {
             fill: #333;
@@ -436,8 +436,8 @@ export default {
         }
 
         .candle-controls {
-            background: $pane-light-bg;
-            border: 1px solid $pane-light-border;
+            background: $light-pane-bg;
+            border: 1px solid $light-pane-border;
 
             .slidecontainer {
                 label {
@@ -445,15 +445,15 @@ export default {
                 }
 
                 .slide {
-                    background: $slide-light-bg;
+                    background: $light-slide-bg;
                 }
 
                 .slide::-webkit-slider-thumb {
-                    background: $slide-light-handle;
+                    background: $light-slide-handle;
                 }
 
                 .slide::-moz-range-thumb {
-                    background: $slide-light-handle;
+                    background: $light-slide-handle;
                 }
             }
 

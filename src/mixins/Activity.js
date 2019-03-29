@@ -1,7 +1,7 @@
 import EventBus from '../EventBus.js';
 
 export const Activity = {
-  data () {
+  data() {
     return {
       completed: false,
       correct: false,
@@ -10,11 +10,11 @@ export const Activity = {
     }
   },
   methods: {
-    makeAttempt (data) {
+    makeAttempt(data) {
       this.attemptData.push(data);
       this.emitEvent('activity-attempt');
     },
-    reset () {
+    reset() {
       this.enabled = false;
       this.completed = false;
       this.correct = false;
@@ -22,7 +22,7 @@ export const Activity = {
       this.tries = 0;
       this.emitEvent('activity-reset');
     },
-    emitEvent (ev) {
+    emitEvent(ev) {
       EventBus.$emit(ev, {
         eventName: ev,
         vueObject: this
@@ -30,14 +30,18 @@ export const Activity = {
     }
   },
   computed: {
-    attempts () {return this.attempts.length},
-    lastAttempt () {return this.attemptData.slice(-1)[0]}
+    attempts() {
+      return this.attempts.length
+    },
+    lastAttempt() {
+      return this.attemptData.slice(-1)[0]
+    }
   },
   watch: {
-    completed () {
+    completed() {
       if (this.completed) this.emitEvent('activity-completed');
     },
-    correct () {
+    correct() {
       if (this.correct) this.emitEvent('activity-correct');
     }
   }

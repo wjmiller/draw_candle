@@ -69,13 +69,13 @@ export default {
 .dark {
 
     .question-open {
-        color: $text-color-dark;
+        color: $dark-text-color;
     }
 
     .response {
-        border-color: $pane-dark-border;
-        background: $pane-dark-bg;
-        color: $text-color-dark;
+        border-color: $dark-pane-border;
+        background: $dark-pane-bg;
+        color: $dark-text-color;
 
         &:active,
         &:focus {
@@ -87,12 +87,12 @@ export default {
 .light {
 
     .question-open {
-        color: $text-color-light;
+        color: $light-text-color;
     }
 
     .response {
-        border-color: $pane-light-border;
-        background: $pane-light-bg;
+        border-color: $light-pane-border;
+        background: $light-pane-bg;
         color: #333;
     }
 }

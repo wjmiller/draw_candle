@@ -72,17 +72,17 @@ export default {
 
 .dark {
     .feedback-display {
-        background-color: $pane-dark-bg;
-        border: 1px solid $pane-dark-border;
-        color: $text-color-dark;
+        background-color: $dark-pane-bg;
+        border: 1px solid $dark-pane-border;
+        color: $dark-text-color;
     }
 }
 
 .light {
     .feedback-display {
-        background: $pane-light-bg;
-        border: 1px solid $pane-light-border;
-        color: $text-color-light;
+        background: $light-pane-bg;
+        border: 1px solid $light-pane-border;
+        color: $light-text-color;
     }
 }
 </style>

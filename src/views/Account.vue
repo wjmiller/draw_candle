@@ -1,24 +1,26 @@
 <template>
-<b-container>
-  <b-row>
-    <b-col>
-      <b-button-close @click="close"></b-button-close>
-      <div class="form-box">
-        <h3>My Account</h3>
+<section>
+  <b-container>
+    <b-row>
+      <b-col>
+        <b-button-close @click="close"></b-button-close>
+        <div class="form-box">
+          <h3>My Account</h3>
 
-        <b-form @submit.prevent="updateProfile">
-          <b-input v-model.trim="name" type="text" :placeholder="userProfile.name" id="name" />
-          <b-input v-model.trim="email" type="email" :placeholder="userProfile.email" id="email" readonly />
-          <b-button type="submit">Update Profile</b-button>
-        </b-form>
+          <b-form @submit.prevent="updateProfile">
+            <b-input v-model.trim="name" type="text" :placeholder="userProfile.name" id="name" />
+            <b-input v-model.trim="email" type="email" :placeholder="userProfile.email" id="email" readonly />
+            <b-button type="submit">Update Profile</b-button>
+          </b-form>
 
-        <transition name="fade">
-          <p v-if="showSuccess" class="success">Profile Updated</p>
-        </transition>
-      </div>
-    </b-col>
-  </b-row>
-</b-container>
+          <transition name="fade">
+            <p v-if="showSuccess" class="success">Profile Updated</p>
+          </transition>
+        </div>
+      </b-col>
+    </b-row>
+  </b-container>
+</section>
 </template>
 
 
@@ -73,7 +75,7 @@ export default {
 .dark {
     .form-box {
         h3 {
-            color: $text-color-dark;
+            color: $dark-text-color;
         }
     }
 }

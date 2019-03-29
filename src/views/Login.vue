@@ -1,67 +1,65 @@
 <template>
-<div id="login">
-  <section>
-    <div class="form-box" :class="{ 'signup-form': !showLoginForm && !showForgotPassword }">
+<section class="view">
+  <div class="form-box" :class="{ 'signup-form': !showLoginForm && !showForgotPassword }">
 
-      <!-- Logo Images -->
-      <img v-if="theme == 'dark'" src="../assets/images/logos/logo.png" />
-      <img v-else src="../assets/images/logos/logo_light.png" />
+    <!-- Logo Images -->
+    <img v-if="theme == 'dark'" src="../assets/images/logos/logo.png" />
+    <img v-else src="../assets/images/logos/logo_light.png" />
 
-      <!-- Login Form -->
-      <b-form v-if="showLoginForm" @submit.prevent="login">
-        <b-input type="email" v-model.trim="loginForm.email" placeholder="Email" id="loginEmail" required />
-        <b-input type="password" v-model.trim="loginForm.password" placeholder="Password" id="loginPass" required />
-        <b-button type="submit">Log In</b-button>
+    <!-- Login Form -->
+    <b-form v-if="showLoginForm" @submit.prevent="login">
+      <b-input type="email" v-model.trim="loginForm.email" placeholder="Email" id="loginEmail" required />
+      <b-input type="password" v-model.trim="loginForm.password" placeholder="Password" id="loginPass" required />
+      <b-button type="submit">Log In</b-button>
+      <div class="extras">
+        <a @click.prevent="toggleForm" href="" class="font-weight-bold">Create an Account</a>
+        <a @click.prevent="togglePasswordReset" href="">Forgot Password</a>
+      </div>
+    </b-form>
+
+    <!-- Sign Up Form -->
+    <b-form v-if="!showLoginForm && !showForgotPassword" @submit.prevent="signup">
+      <b-input type="text" v-model.trim="signupForm.name" placeholder="Full Name" id="signupName" required />
+      <b-input type="email" v-model="signupForm.email" placeholder="Email" id="signupEmail" required />
+      <b-input type="password" v-model="signupForm.password" placeholder="Password" id="signupPass" required />
+      <b-button type="submit">Create Account</b-button>
+      <div class="extras">
+        <a @click.prevent="toggleForm" href="">Back to Log In</a>
+      </div>
+    </b-form>
+
+    <!-- Forgot Password -->
+    <b-form v-if="showForgotPassword" @submit.prevent class="password-reset">
+      <div v-if="!passwordResetSuccess">
+        <h1>Reset Password</h1>
+        <p>We will send you an email to reset your password</p>
+        <b-input v-model.trim="passwordForm.email" type="email" placeholder="Email" id="forgotEmail" required />
+        <b-button @click="resetPassword" type="button">Submit</b-button>
         <div class="extras">
-          <a @click.prevent="toggleForm" href="" class="font-weight-bold">Create an Account</a>
-          <a @click.prevent="togglePasswordReset" href="">Forgot Password</a>
+          <a @click.prevent="togglePasswordReset" href="">Back to Log In</a>
         </div>
-      </b-form>
+      </div>
 
-      <!-- Sign Up Form -->
-      <b-form v-if="!showLoginForm && !showForgotPassword" @submit.prevent="signup">
-        <b-input type="text" v-model.trim="signupForm.name" placeholder="Full Name" id="signupName" required />
-        <b-input type="email" v-model="signupForm.email" placeholder="Email" id="signupEmail" required />
-        <b-input type="password" v-model="signupForm.password" placeholder="Password" id="signupPass" required />
-        <b-button type="submit">Create Account</b-button>
-        <div class="extras">
-          <a @click.prevent="toggleForm" href="">Back to Log In</a>
-        </div>
-      </b-form>
+      <div v-else>
+        <h1>Email Sent</h1>
+        <p>check your email for a link to reset your password</p>
+        <b-button @click="togglePasswordReset" type="button">Back to login</b-button>
+      </div>
+    </b-form>
 
-      <!-- Forgot Password -->
-      <b-form v-if="showForgotPassword" @submit.prevent class="password-reset">
-        <div v-if="!passwordResetSuccess">
-          <h1>Reset Password</h1>
-          <p>We will send you an email to reset your password</p>
-          <b-input v-model.trim="passwordForm.email" type="email" placeholder="Email" id="forgotEmail" required />
-          <b-button @click="resetPassword" type="button">Submit</b-button>
-          <div class="extras">
-            <a @click.prevent="togglePasswordReset" href="">Back to Log In</a>
-          </div>
-        </div>
+    <!-- Loading and Error -->
+    <transition name="fade">
+      <div v-if="performingRequest" class="loading"></div>
+    </transition>
 
-        <div v-else>
-          <h1>Email Sent</h1>
-          <p>check your email for a link to reset your password</p>
-          <b-button @click="togglePasswordReset" type="button">Back to login</b-button>
-        </div>
-      </b-form>
+    <transition name="fade">
+      <div v-if="errorMsg !== ''" class="error-msg">
+        <p>{{ errorMsg }}</p>
+      </div>
+    </transition>
 
-      <!-- Loading and Error -->
-      <transition name="fade">
-        <div v-if="performingRequest" class="loading"></div>
-      </transition>
-
-      <transition name="fade">
-        <div v-if="errorMsg !== ''" class="error-msg">
-          <p>{{ errorMsg }}</p>
-        </div>
-      </transition>
-
-    </div>
-  </section>
-</div>
+  </div>
+</section>
 </template>
 
 
@@ -167,10 +165,6 @@ export default {
 <style lang="scss">
 @import '../Variables.scss';
 
-#app {
-    padding-top: 40px;
-}
-
 .form-box {
     width: 100%;
     max-width: 400px;
@@ -255,12 +249,12 @@ export default {
 .dark {
     .form-box {
         a {
-            color: $text-color-dark;
+            color: $dark-text-color;
 
             &:active,
             &:focus,
             &:hover {
-                color: lighten($text-color-dark, 30%);
+                color: lighten($dark-text-color, 30%);
             }
         }
 
@@ -269,7 +263,7 @@ export default {
                 color: #fff;
             }
             p {
-                color: $text-color-dark;
+                color: $dark-text-color;
             }
         }
     }
@@ -278,21 +272,21 @@ export default {
 .light {
     .form-box {
         a {
-            color: $text-color-light;
+            color: $light-text-color;
 
             &:active,
             &:focus,
             &:hover {
-                color: lighten($text-color-light, 30%);
+                color: lighten($light-text-color, 30%);
             }
         }
 
         .password-reset {
             h1 {
-                color: $text-color-light;
+                color: $light-text-color;
             }
             p {
-                color: $text-color-light;
+                color: $light-text-color;
             }
         }
     }
