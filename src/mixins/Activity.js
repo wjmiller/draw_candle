@@ -130,12 +130,6 @@ export const Activity = {
       return this.activated
     }
   },
-  beforeCreate() {
-    this.correctTests = []
-    this.completeTests = []
-    this.attemptDataKeysLocal= []
-    this.activityDescription = 'generic activity'
-  },
   created() {
     //add any correct tests passed through props
     if (this.correctTest) {

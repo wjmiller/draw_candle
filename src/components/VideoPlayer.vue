@@ -1,14 +1,13 @@
 <template lang="html">
   <div class="embed-responsive embed-responsive-16by9">
     <video ref="video" controls
-      :poster="poster"
+      v-bind:poster="poster"
       v-on:loadedmetadata="setDuration"
       v-on:ended.once="completeActivity"
       v-on:timeupdate="updateProgress"
     >
       <source :src="source" type="video/mp4">
     </video>
-    <div>{{percentComplete}}%</div>
   </div>
 </template>
 
