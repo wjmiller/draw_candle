@@ -39,12 +39,6 @@ export default {
       }
       this.checked = false;
       this.correct = this.feedbackData.open === 0 && this.feedbackData.close === 0 && this.feedbackData.high === 0 && this.feedbackData.low === 0 ? true : false;
-      if (this.correct) {
-        /* eslint-disable */
-        console.log(this.actId);
-        console.log(data);
-        /* eslint-enable */
-      }
       this.$emit('candle-correct', this.correct);
     }
   },

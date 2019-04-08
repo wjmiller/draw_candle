@@ -3,18 +3,25 @@
     <h2>{{activity.title}}</h2>
     <p>{{activity.questions[0].instruction}}</p>
     <candle-row
+      ref="candlerow"
       v-for="(candle, ix) in activity.candles"
-      :key="`${activity.id}-${ix}-candle`"
-      :theme="theme"
-      :candle="candle"
+      v-bind:key="`${activity.id}-${ix}-candle`"
+      v-bind:activity-id="`${activity.id}-${ix}-candle-row`"
+      v-bind:activity-bus-on="false"
+      v-bind:theme="theme"
+      v-bind:candle="candle"
       v-on:candle-correct="updateCandlesCorrect($event, ix)"
     />
     <question-row
+      ref="questionrow"
       v-for="(question, ix) in activity.questions"
-      :key="`${activity.id}-${ix}-question`"
-      :question="question"
-      :active="openQuestion"
-      v-on:valid-change="isActivityDone()"
+      v-bind:key="`${activity.id}-${ix}-question`"
+      v-bind:activity-id="`${activity.id}-${ix}-question-row`"
+      v-bind:activity-bus-on="false"
+      v-bind:question="question"
+      v-bind:active="openQuestion"
+      v-on:activity-completed="completeActivityGroup"
+      v-on:question-open-valid="isActivityDone"
     />
   </div>
 </template>
@@ -22,9 +29,7 @@
 <script>
 import CandleRow from './CandleRow'
 import QuestionRow from './QuestionRow'
-import {
-  Activity
-} from '../mixins/Activity.js'
+import { Activity } from '../mixins/Activity.js'
 
 export default {
   name: 'activity-group',
@@ -32,34 +37,39 @@ export default {
   props: ['activity', 'theme'],
   data() {
     return {
+      openQuestion: false,
       candlesCorrect: [],
-      openQuestion: false
+      activityDescription: 'candle-builder-activity-group'
     }
   },
   components: {
     CandleRow,
     QuestionRow
   },
-  created() {
-    this.candlesCorrect = Array.from(this.activity.candles).fill(false);
-  },
   methods: {
     isActivityDone() {
-      //console.log(this);
-      this.checkCandles();
+      this.checkCandles()
       if (this.openQuestion) {
-        this.completed = true;
+        this.completed = true
       }
     },
     checkCandles() {
       if (this.candlesCorrect.every(item => item === true) && this.candlesCorrect.length === this.activity.candles.length) {
-        this.openQuestion = true;
+        this.openQuestion = true
       }
     },
     updateCandlesCorrect(val, ix) {
       this.candlesCorrect[ix] = val;
       this.checkCandles()
+    },
+    completeActivityGroup() {
+      this.makeAttempt()
     }
+  },
+  created () {
+    this.addCorrectTest(function (act) {return act.$refs.questionrow.every(qr => qr.completed)})
+    //this.addCorrectTest(function (act) {return act.$refs.questionrow.every(qr => qr.completed)})
+    this.candlesCorrect = Array.from(this.activity.candles).fill(false)
   }
 }
 </script>

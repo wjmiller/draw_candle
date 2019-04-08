@@ -6,6 +6,7 @@ import firebase from 'firebase'
 import Lesson from '@/views/Lesson'
 import Login from '@/views/Login'
 import Account from '@/views/Account'
+import ActivityTest from '@/views/ActivityTest'
 
 Vue.use(Router)
 
@@ -33,6 +34,14 @@ const router = new Router({
       path: '/account',
       name: 'Account',
       component: Account,
+      meta: {
+        requiresAuth: true
+      }
+    },
+    {
+      path: '/activity-test',
+      name: 'ActivityTest',
+      component: ActivityTest,
       meta: {
         requiresAuth: true
       }

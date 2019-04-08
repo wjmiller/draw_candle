@@ -1,6 +1,6 @@
 <template>
 <div id="app" v-bind:class="{'light': theme === 'light', 'dark':theme === 'dark'}">
-  <Navbar></Navbar>
+  <Navbar v-on:theme-switched="toggleTheme"></Navbar>
   <router-view :theme="theme"></router-view>
 </div>
 </template>
@@ -16,6 +16,11 @@ export default {
   },
   components: {
     Navbar
+  },
+  methods: {
+    toggleTheme (val) {
+      if (val === 'dark' || val === 'light') this.theme = val
+    }
   }
 }
 </script>

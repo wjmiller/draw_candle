@@ -14,19 +14,26 @@
           <i v-on:click="toggleObjectives" v-bind:class="{'open':objShow}"></i>
           <h5>Objectives</h5>
           <ul v-show="objShow">
-            <li v-for="(obj, ix) in data.objectives" :key="ix + '-objective'">{{obj}}</li>
+            <li v-for="(obj, ix) in data.objectives" :key="`${ix}-objective`">{{obj}}</li>
           </ul>
         </div>
       </b-col>
       <!-- Lesson Video -->
       <b-col md="12" lg="6">
-        <video controls poster="../assets/images/video_posters/life_of_candle.png">
-          <source src="../assets/videos/life_of_candle.mp4" type="video/mp4">
-        </video>
+          <video-player
+            source="./videos/life_of_candle.mp4"
+            poster="../assets/images/video_posters/life_of_candle.png"
+          />
       </b-col>
     </b-row>
     <!-- Lesson Activities -->
-    <ActivityGroup v-for="(activity, index) in data.activities" :key="`act-group-${index}`" :activity="activity" :theme="data.theme" v-on:activity-group-complete="completeActivityGroup" />
+    <activity-group
+      v-for="(activity, index) in data.activities"
+      v-bind:key="`act-group-${index}`"
+      v-bind:activity-id="`${activity.id}`"
+      v-bind:activity="activity"
+      v-bind:theme="data.theme"
+    />
   </b-container>
 </section>
 </template>
@@ -34,6 +41,7 @@
 
 <script>
 import ActivityGroup from '../components/ActivityGroup'
+import VideoPlayer from '../components/VideoPlayer'
 import AppData from '../AppData.js'
 import xAPI from '../xAPI.js'
 
@@ -63,7 +71,8 @@ export default {
     }
   },
   components: {
-    ActivityGroup
+    ActivityGroup,
+    VideoPlayer
   },
   watch: {
     user(auth) {
@@ -76,8 +85,7 @@ export default {
     },
     toggleObjectives() {
       this.objShow = !this.objShow;
-    },
-    completeActivityGroup() {}
+    }
   }
 }
 </script>

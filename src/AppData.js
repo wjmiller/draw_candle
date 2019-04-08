@@ -10,9 +10,9 @@ const AppData = {
     ]
   },
   objectives: [
-    'Understand the relationships blah blah',
-    'Identify key blah blah of candle',
-    'Demonstrate ability to blah blah'
+    'Correctly identify high, low, open, and close values in a candlestick',
+    'Transform price values into a candlestick',
+    'Recognize meaning of candlestick formations'
   ],
   activities: [{
       id: "samecandle",
@@ -116,9 +116,9 @@ const AppData = {
       ],
       questions: [{
         instruction: "Build the candles in this group correctly to view the question.",
-        question: "If two candles are the same except for the color of the body, what does it mean?",
+        question: "If the wicks of two candles are the same and the bodies have the same range but one is red and one is green, what does it mean?",
         feedback: {
-          correct: "Two identical candles mean that the high and low values were the same, but the opening and closing values are reversed. The bottom of the green candle is the opening and the top the closing. The bottom of the red candle is the closing and the top the opening.",
+          correct: "Two candles with the same range means that the high and low values were the same, but the opening and closing values are reversed. The bottom of the green candle is the opening and the top the closing. The bottom of the red candle is the closing and the top the opening.",
         }
       }]
     },

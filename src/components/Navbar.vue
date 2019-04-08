@@ -2,6 +2,14 @@
   <b-navbar>
     <b-container>
       <b-navbar-nav v-if="currentUser" class="ml-auto">
+        <toggle-button
+          :value="true"
+          :labels="{checked: 'Dark ', unchecked: ' Light'}"
+          :width="75"
+          :height="35"
+          :color="{checked: '#676EC9'}"
+          v-on:change="themeSwitch"
+        />
         <b-nav-item-dropdown :text="firstNameOnly" right>
           <b-dropdown-item @click="toAccount" href="">Account</b-dropdown-item>
           <b-dropdown-item @click="logout" href="">Logout</b-dropdown-item>
@@ -12,13 +20,15 @@
 </template>
 
 <script>
-import {
-  mapState
-} from 'vuex'
+import {ToggleButton} from 'vue-js-toggle-button'
+import { mapState } from 'vuex'
 const fb = require('../firebase.js')
 
 export default {
   name: "navbar",
+  components: {
+    ToggleButton
+  },
   computed: {
     ...mapState(['userProfile']),
     ...mapState(['currentUser']),
@@ -37,6 +47,9 @@ export default {
     toAccount() {
       // Route to Account
       this.$router.replace('/account')
+    },
+    themeSwitch(ev) {
+      this.$emit('theme-switched', ev.value ? 'dark' : 'light')
     }
   }
 }

@@ -13,8 +13,11 @@
 </template>
 
 <script>
+import { Activity } from '../mixins/Activity.js'
+
 export default {
   name: 'question-feedback',
+  mixins: [Activity],
   props: {
     active: Boolean,
     feedback: Object
@@ -24,18 +27,21 @@ export default {
       revealed: false,
       message: 'this is a test',
       inactiveMessage: 'You must write a sufficiently intelligible response in order to compare responses.',
-      buttonTitle: 'Compare My Response'
+      buttonTitle: 'Compare My Response',
+      activityDescription: 'get feedback'
     }
   },
   computed: {
     activeFeedback() {
-      return !this.active;
+      return !this.active
     }
   },
   methods: {
     revealFeedback() {
       if (this.active) {
-        this.revealed = true;
+        this.revealed = true
+        this.correct = true
+        this.makeAttempt()
       }
     }
   }

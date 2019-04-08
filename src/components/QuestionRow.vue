@@ -5,10 +5,24 @@
       <span class="prompt">Correctly complete the activity above to unlock this question.</span>
     </b-col>
     <b-col v-if="active" cols="12" md="9">
-      <question-open v-on:valid-change="activateFeedback($event)" :active="active" :question="question.question" :comparison="question.feedback.correct"/>
+      <question-open
+        ref="questionopen"
+        v-bind:activity-id="`${activityId}-question-open`"
+        v-bind:activated="activated"
+        v-bind:question="question.question"
+        v-bind:comparison="question.feedback.correct"
+        v-on:activity-completed="triggerCorrect"
+        v-on:question-open-valid="activateFeedback($event)"
+      />
     </b-col>
     <b-col v-if="active" cols="12" md="3">
-      <question-feedback :active="feedbackActive" :feedback="question.feedback"/>
+      <question-feedback
+        ref="feedback"
+        v-bind:activity-id="`${activityId}-question-feedback`"
+        v-bind:activity-bus-on="false"
+        v-bind:active="feedbackActive"
+        v-bind:feedback="question.feedback"
+      />
     </b-col>
   </b-row>
 </template>
@@ -16,14 +30,17 @@
 <script>
 import QuestionOpen from './QuestionOpen'
 import QuestionFeedback from './QuestionFeedback'
+import { Activity } from '../mixins/Activity.js'
 
 
 export default {
   name: 'question-row',
+  mixins: [Activity],
   props: ['question', 'active'],
   data() {
     return {
-      feedbackActive: false
+      feedbackActive: false,
+      activityDescription: 'open question with feedback',
     }
   },
   components: {
@@ -33,7 +50,11 @@ export default {
   methods: {
     activateFeedback(val) {
       this.feedbackActive = val
-      this.$emit('valid-change', true);
+      this.$emit('question-open-valid', true);
+    },
+    triggerCorrect() {
+      this.complete = true
+      this.makeAttempt()
     }
   }
 }
