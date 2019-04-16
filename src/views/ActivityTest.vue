@@ -5,6 +5,7 @@
     <b-row class="intro">
       <!-- Lesson Info -->
       <b-col md="12" lg="6">
+        <custom-balance-game />
         <activity-button-guess
           activity-id="activity-button-guess-1"
           v-bind:attempt-data-keys="['button1', 'button2']"
@@ -22,6 +23,7 @@
 
 <script>
 import ActivityButtonGuess from '../components/Activity'
+import CustomBalanceGame from '../components/Custom/BalanceGame/BalanceGame'
 
 export default {
   name: 'lesson',
@@ -31,7 +33,8 @@ export default {
     }
   },
   components: {
-    ActivityButtonGuess
+    ActivityButtonGuess,
+    CustomBalanceGame
   }
 }
 </script>
