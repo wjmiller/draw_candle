@@ -5,14 +5,7 @@
     <b-row class="intro">
       <!-- Lesson Info -->
       <b-col md="12" lg="6">
-        <activity-button-guess
-          activity-id="activity-button-guess-1"
-          v-bind:attempt-data-keys="['button1', 'button2']"
-          v-bind:attempts-allowed="5"
-          v-bind:activated.sync="startActivated"
-          v-bind:button1-correct="1"
-          v-bind:button2-correct="2"
-        />
+        <custom-balance-game />
       </b-col>
     </b-row>
   </b-container>
@@ -21,7 +14,7 @@
 
 
 <script>
-import ActivityButtonGuess from '../components/Activity'
+import CustomBalanceGame from '../components/Custom/BalanceGame/BalanceGame'
 
 export default {
   name: 'lesson',
@@ -31,7 +24,7 @@ export default {
     }
   },
   components: {
-    ActivityButtonGuess
+    CustomBalanceGame
   }
 }
 </script>

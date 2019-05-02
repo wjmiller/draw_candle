@@ -7,6 +7,9 @@ import Lesson from '@/views/Lesson'
 import Login from '@/views/Login'
 import Account from '@/views/Account'
 import ActivityTest from '@/views/ActivityTest'
+import GameTest from '@/views/GameTest'
+import FeedbackTest from '@/views/FeedbackTest'
+import MultiChoiceTest from '@/views/MultiChoiceTest'
 
 Vue.use(Router)
 
@@ -43,7 +46,31 @@ const router = new Router({
       name: 'ActivityTest',
       component: ActivityTest,
       meta: {
-        requiresAuth: true
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/feedback-test',
+      name: 'FeedbackTest',
+      component: FeedbackTest,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/game-test',
+      name: 'GameTest',
+      component: GameTest,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/multi-choice-test',
+      name: 'MultiChoiceTest',
+      component: MultiChoiceTest,
+      meta: {
+        requiresAuth: false
       }
     }
   ]
